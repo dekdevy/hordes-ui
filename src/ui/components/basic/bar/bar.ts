@@ -42,7 +42,7 @@ export const set = (bar: Bar, fraction: number, textLeft: string, textRight: str
   fraction = Math.max(0, Math.min(1, fraction)) // clamp the fraction
 
   // detect changed states
-  if(bar.fraction !== fraction) {
+  if(bar.fraction >= fraction) {
     bar.elements.inner.style.width = `${fraction*100}%`
   }
   if(bar.textLeft !== textLeft) {
