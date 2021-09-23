@@ -1,10 +1,10 @@
 {
   "name": "hordes-ui",
   "scripts": {
-    "dev-tsc": "tsc --watch",
-    "dev-rollup": "rollup --config ./rollupconfig.js -w",
-    "dev-server": "nodemon ./dist/js/server/server.js --watch ./dist/js/server/server.js",
-    "build": "tsc && rollup --config ./rollupconfig.js",
+    "dev-tsc": "npx tsc --watch",
+    "dev-rollup": "npx rollup --config ./rollupconfig.js -w",
+    "dev-server": "npx nodemon ./dist/js/server/server.js --watch ./dist/js/server/server.js",
+    "build": "npx tsc && npx rollup --config ./rollupconfig.js",
     "test": "npx eslint . --ext .ts"
   },
   "devDependencies": {
