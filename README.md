@@ -12,5 +12,5 @@ npm run dev-rollup
 To start the dev server, you can run additionally:
 ```
 npm run dev-server
-
 ```
+This serves the compiled `ui.js` result to `localhost:8080`.
