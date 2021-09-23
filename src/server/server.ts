@@ -1,1 +1,1 @@
-console.log('i am server')
+console.log('i am server');
