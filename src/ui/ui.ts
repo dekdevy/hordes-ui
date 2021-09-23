@@ -14,4 +14,4 @@ const test = (time: number):void => {
   bar.set(health, hp/maxHp, 'Peter', `${hp}/${maxHp}`)
   requestAnimationFrame(test)
 }
-test()
+test(0)
