@@ -43,12 +43,15 @@ export const set = (bar: Bar, fraction: number, textLeft: string, textRight: str
 
   // detect changed states
   if(bar.fraction !== fraction) {
+    bar.fraction = fraction
     bar.elements.inner.style.width = `${fraction*100}%`
   }
   if(bar.textLeft !== textLeft) {
+    bar.textLeft = textLeft
     bar.elements.textLeft.innerHTML = textLeft
   }
   if(bar.textRight !== textRight) {
+    bar.textRight = textRight
     bar.elements.textRight.innerHTML = textRight
   }
 }
