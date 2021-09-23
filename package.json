@@ -2,7 +2,8 @@
   "name": "hordes-ui",
   "scripts": {
     "dev-tsc": "tsc --watch",
-    "dev-rollup": "rollup --config ./rollupconfig.js -w"
+    "dev-rollup": "rollup --config ./rollupconfig.js -w",
+    "dev-server": "nodemon ./dist/js/server/server.js --watch ./dist/js/server/server.js"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.5",

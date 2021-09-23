@@ -8,3 +8,9 @@ Running for development, you'll need to run in simultaneously:
 npm run dev-tsc
 npm run dev-rollup
 ```
+
+To start the dev server, you can run additionally:
+```
+npm run dev-server
+
+```
