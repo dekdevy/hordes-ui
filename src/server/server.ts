@@ -1,4 +1,3 @@
-// Require the framework and instantiate it
 const fastify = require('fastify')({ logger: false })
 const fastifyStatic = require('fastify-static')
 const port = 8080
