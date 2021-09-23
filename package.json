@@ -1,4 +1,10 @@
 {
   "name": "hordes-ui",
   "scripts": {},
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "dev-tsc": "tsc --watch"
+  }
 }

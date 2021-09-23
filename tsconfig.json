@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "outDir": "dist/ts",
+    "noImplicitAny": true,
+    "lib": ["es2019", "dom"],
+    "target": "es2019",
+    "baseUrl": "src",
+    "paths": {
+        "ui/*": ["ui/*"],
+        "server/*": ["server/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
