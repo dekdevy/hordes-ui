@@ -1,6 +1,6 @@
-import { element } from '../../../utils.js'
+import {element} from 'ui/utils'
 
-export const create = (parent: HTMLElement) : Bar => {
+export const create = (parent: HTMLElement, width: number, height: number, pos: {x: number, y: number}) : Bar => {
 
   // create elements
   const outer = element(parent, 'div')
@@ -10,17 +10,19 @@ export const create = (parent: HTMLElement) : Bar => {
 
   // for testing these are some basic hardcoded styles, we will replace it with css
   outer.style.backgroundColor = '#333'
-  outer.style.width = '300px'
+  outer.style.width = width.toString()
   outer.style.position = 'relative'
+  outer.style.left = pos.x.toString()
+  outer.style.top = pos.y.toString()
   inner.style.backgroundColor = '#3F3'
-  inner.style.height = '30px'
+  inner.style.height = height.toString()
   textLeft.style.position = 'absolute'
   textLeft.style.top = '0'
   textRight.style.position = 'absolute'
   textRight.style.top = '0'
   textRight.style.right = '0'
 
-  const bar : Bar = {
+  return {
     fraction : 1,
     textLeft : '',
     textRight: '',
@@ -32,8 +34,6 @@ export const create = (parent: HTMLElement) : Bar => {
       textLeft
     }
   }
-
-  return bar
 }
 
 export const set = (bar: Bar, fraction: number, textLeft: string, textRight: string) : void => {
