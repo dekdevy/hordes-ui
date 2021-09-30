@@ -12,6 +12,7 @@ export const create = (
 
   // Inline styles, should go to CSS
   outer.style.position = 'relative'
+  outer.style.display = 'inline-block'
   outer.style.border = '2px inset black'
   outer.style.userSelect = 'none'
 
@@ -50,27 +51,31 @@ export const create = (
 
 function dragIcon(downEvent: MouseEvent) {
   if (downEvent.buttons & 1) {
-    const element = (downEvent.target as HTMLElement)
-    const outer = element.parentElement
+    const element = (this as HTMLElement)
     // Should go to CSS stuff
-    outer.style.cursor = 'grabbing'
-    outer.style.position = 'absolute'
+    element.style.cursor = 'grabbing'
+    element.style.position = 'absolute'
+    element.style.left = element.offsetLeft.toString()
+    element.style.top = element.offsetTop.toString()
 
-    const mover = moveIcon(element)
-    document.addEventListener('mousemove', mover)
-    document.addEventListener('mouseup', () => {
-      this.removeEventListener('mousemove', mover)
-      this.removeEventListener('mouseup', arguments.callee)
-    })
-  }
-}
-
-function moveIcon(element: HTMLElement) {
-  // Make sure mouse is still pressed
-  return (moveEvent : MouseEvent) => {
-    if (moveEvent.buttons & 1) {
-      element.style.left += moveEvent.movementX
-      element.style.top += moveEvent.movementY
+    const mouseMove = (moveEvent: MouseEvent) => {
+      if (moveEvent.buttons & 1) {
+        element.style.left = (parseInt(element.style.left.replace('px', '')) + moveEvent.movementX).toString()
+        element.style.top = (parseInt(element.style.top.replace('px', '')) + moveEvent.movementY).toString()
+      }
     }
+    document.addEventListener('mousemove', mouseMove)
+
+    const mouseUp = () => {
+      document.removeEventListener('mousemove', mouseMove)
+      document.removeEventListener('mouseup', mouseUp)
+
+      element.style.cursor = null
+      element.style.position = 'relative'
+      element.style.left = null
+      element.style.top = null
+    }
+    document.addEventListener('mouseup', mouseUp)
+    downEvent.stopImmediatePropagation()
   }
 }

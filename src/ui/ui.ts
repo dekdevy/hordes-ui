@@ -25,10 +25,12 @@ const skillHeader = document.createElement('div')
 skillHeader.innerText = 'SKILL PANEL'
 const skillPanel = panel.create(document.body, 500, 100, 300, 300, skillHeader, document.createElement('div'), true, false, false)
 
-const skillImage = document.createElement('img')
-// Skill image to make it look super pretty
-skillImage.setAttribute('src', 'https://hordes.io/assets/ui/skills/23.webp?v=4652922')
-icon.create(skillPanel.elements.inner, 40, 40, skillImage, true)
+for (const key of Array(8) .keys()) {
+  const skillImage = document.createElement('img')
+  // Skill image to make it look super pretty
+  skillImage.setAttribute('src', `https://hordes.io/assets/ui/skills/${key}.webp?v=4652922`)
+  icon.create(skillPanel.elements.inner, 40, 40, skillImage, true)
+}
 
 // Resizable panel
 const resizeHeader = document.createElement('div')
