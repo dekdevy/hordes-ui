@@ -23,7 +23,10 @@ panel.create(document.body, 100, 100, 300, 300, panelHeader, panelContent, true,
 // Draggable panel
 const skillHeader = document.createElement('div')
 skillHeader.innerText = 'SKILL PANEL'
-const skillPanel = panel.create(document.body, 500, 100, 300, 300, skillHeader, document.createElement('div'), true, false, false)
+skillHeader.style.textAlign = 'center'
+const skillPanel =
+  panel.create(document.body, screen.width / 2 - 300, screen.height - 250, 355, 70, skillHeader, document.createElement('div'), true, false, false)
+skillPanel.elements.inner.style.textAlign = 'center'
 
 for (const key of Array(8) .keys()) {
   const skillImage = document.createElement('img')
@@ -34,12 +37,12 @@ for (const key of Array(8) .keys()) {
 
 // Resizable panel
 const resizeHeader = document.createElement('div')
-resizeHeader.innerText = 'RESIZE ME, but very very carefully!'
+resizeHeader.innerText = 'RESIZE ME!'
 panel.create(document.body, 800, 400, 300, 200, resizeHeader, document.createElement('div'), false, true, false)
 
 // Closable panel
 const closeHeader = document.createElement('div')
-closeHeader.innerText = 'CLOSE ME, as hard as you want!'
+closeHeader.innerText = 'CLOSE ME!'
 panel.create(document.body, 300, 700, 250, 200, closeHeader, document.createElement('div'), false, false, true)
 
 // tick every frame
