@@ -1,14 +1,12 @@
 interface Panel {
-  width: number,
-  height: number,
-  pos: {
+  defaultX: number,
+  defaultY: number
+  state: {
     x: number,
-    y: number
-  },
-  defaultPos: {
-    x: number,
-    y: number
-  },
+    y: number,
+    width: number,
+    height: number
+  }
   elements: {
     outer: HTMLElement,
     header: HTMLElement
