@@ -1,4 +1,5 @@
 import * as bar from 'ui/components/basic/bar/bar.js'
+import * as icon from 'ui/components/basic/icon/icon.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
 
 // just a little more testing
@@ -20,9 +21,14 @@ panelContent.innerHTML = `<table><tr>HP</tr><tr>MP</tr><td>${maxHp}</td><td>${ma
 panel.create(document.body, 100, 100, 300, 300, panelHeader, panelContent, true, true, true)
 
 // Draggable panel
-const dragHeader = document.createElement('div')
-dragHeader.innerText = 'DRAG ME, carefully!'
-panel.create(document.body, 500, 100, 300, 300, dragHeader, document.createElement('div'), true, false, false)
+const skillHeader = document.createElement('div')
+skillHeader.innerText = 'SKILL PANEL'
+const skillPanel = panel.create(document.body, 500, 100, 300, 300, skillHeader, document.createElement('div'), true, false, false)
+
+const skillImage = document.createElement('img')
+// Skill image to make it look super pretty
+skillImage.setAttribute('src', 'https://hordes.io/assets/ui/skills/23.webp?v=4652922')
+icon.create(skillPanel.elements.inner, 40, 40, skillImage, true)
 
 // Resizable panel
 const resizeHeader = document.createElement('div')
