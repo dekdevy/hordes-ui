@@ -76,9 +76,9 @@ export const cooldown = (icon: Icon, time: number): void => {
       position: absolute;
       padding: 1px;
       top: 25%;
-      left: 25%;
+      left: 20%;
       z-index: 10;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 1000;
       background: rgba(0,0,0,0.5);
       color: rgba(255,255,0,1);

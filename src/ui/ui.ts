@@ -1,5 +1,5 @@
 import * as bar from 'ui/components/basic/bar/bar.js'
-import * as icon from 'ui/components/basic/icon/icon.js'
+import * as icon from 'ui/components/basic/icon/icon_css_animation_reverse.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
 
 // just a little more testing
@@ -25,7 +25,7 @@ const skillHeader = document.createElement('div')
 skillHeader.innerText = 'SKILL PANEL'
 skillHeader.style.textAlign = 'center'
 const skillPanel =
-  panel.create(document.body, screen.width / 2 - 300, screen.height - 250, 355, 70, skillHeader, document.createElement('div'), true, false, false)
+  panel.create(document.body, screen.width / 2 - 300, screen.height - 250, 400, 70, skillHeader, document.createElement('div'), true, false, false)
 skillPanel.elements.inner.style.textAlign = 'center'
 
 for (const key of Array(8) .keys()) {
@@ -45,10 +45,15 @@ panel.create(document.body, 800, 400, 300, 200, resizeHeader, document.createEle
 // Closable panel
 const closeHeader = document.createElement('div')
 closeHeader.innerText = 'CLOSE ME!'
-panel.create(document.body, 300, 700, 250, 200, closeHeader, document.createElement('div'), false, false, true)
+panel.create(document.body, 300, 500, 250, 200, closeHeader, document.createElement('div'), false, false, true)
 
 // tick every frame
+let lastTimes: number[] = []
+let lastTime = 0
 const test = (time: number): void => {
+  const delta = time - lastTime
+  lastTimes.push(delta)
+  lastTimes = lastTimes.slice(-60)
 
   // calculate some moving hp/mp numbers
   const hp = Math.round(maxHp * (Math.sin(time / 1000) * 0.5 + 0.5))
@@ -58,9 +63,16 @@ const test = (time: number): void => {
   bar.set(health, hp / maxHp, 'Peter\'s HP', `${hp}/${maxHp}`)
   bar.set(mana, mp / maxMp, 'Peter\'s MP', `${mp}/${maxMp}`)
 
-  // simulate an updating content element
-  panelContent.innerHTML = `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td>`
+  let averageTime = 0.0
+  for(const t of lastTimes) {
+    averageTime = averageTime + t
+  }
 
+  // simulate an updating content element
+  panelContent.innerHTML =
+    `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td><br/>Delta: ${(averageTime / lastTimes.length).toFixed(2)}`
+
+  lastTime = time
   requestAnimationFrame(test)
 }
 test(0)
