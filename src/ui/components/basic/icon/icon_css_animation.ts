@@ -161,7 +161,6 @@ export const cooldown = (icon: Icon, time: number): void => {
   progressRight.style.clip = `rect(0px, ${icon.state.width/2}px, ${height}px, 0px)`
 
   const animationStart = () => {
-    console.log('start')
     let start: number
     const animationFrame = (timestamp: number) => {
       if(!start)
@@ -178,7 +177,6 @@ export const cooldown = (icon: Icon, time: number): void => {
   }
 
   const animationEnd = () => {
-    console.log('end')
     progressRight.removeEventListener('animationstart', animationStart)
     progressLeft.removeEventListener('animationend', animationEnd)
     cooldownOverlay.remove()

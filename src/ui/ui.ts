@@ -1,5 +1,5 @@
 import * as bar from 'ui/components/basic/bar/bar.js'
-import * as icon from 'ui/components/basic/icon/icon_css_animation_reverse.js'
+import * as icon from 'ui/components/basic/icon/icon_canvas.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
 
 // just a little more testing
@@ -18,22 +18,22 @@ const panelContent = document.createElement('div')
 panelContent.innerHTML = `<table><tr>HP</tr><tr>MP</tr><td>${maxHp}</td><td>${maxMp}</td>`
 
 // Draggable, resizable, closable panel
-panel.create(document.body, 100, 100, 300, 300, panelHeader, panelContent, true, true, true)
+panel.create(document.body, 0, 0, 300, 300, panelHeader, panelContent, true, true, true)
 
 // Draggable panel
 const skillHeader = document.createElement('div')
 skillHeader.innerText = 'SKILL PANEL'
 skillHeader.style.textAlign = 'center'
 const skillPanel =
-  panel.create(document.body, screen.width / 2 - 300, screen.height - 250, 400, 70, skillHeader, document.createElement('div'), true, false, false)
+  panel.create(document.body, 300, 50, 500, 100, skillHeader, document.createElement('div'), true, false, false)
 skillPanel.elements.inner.style.textAlign = 'center'
 
-for (const key of Array(8) .keys()) {
+for (const _key of Array(10).keys()) {
   const skillImage = document.createElement('img')
   // Skill image to make it look super pretty
-  skillImage.setAttribute('src', `https://hordes.io/assets/ui/skills/${key}.webp?v=4652922`)
+  skillImage.setAttribute('src', `https://hordes.io/assets/ui/skills/${(Math.random() * 40).toFixed(0)}.webp?v=4652922`)
   const skillIcon = icon.create(skillPanel.elements.inner, 40, 40, skillImage, true)
-  icon.cooldown(skillIcon, Math.random() * 60)
+  icon.cooldown(skillIcon, 20)
 
 }
 
@@ -45,12 +45,17 @@ panel.create(document.body, 800, 400, 300, 200, resizeHeader, document.createEle
 // Closable panel
 const closeHeader = document.createElement('div')
 closeHeader.innerText = 'CLOSE ME!'
-panel.create(document.body, 300, 500, 250, 200, closeHeader, document.createElement('div'), false, false, true)
+panel.create(document.body, 300, 400, 250, 200, closeHeader, document.createElement('div'), false, false, true)
 
 // tick every frame
 let lastTimes: number[] = []
 let lastTime = 0
+let start: number
+let steps = 0
 const test = (time: number): void => {
+  if(!start)
+    start = time
+  steps++
   const delta = time - lastTime
   lastTimes.push(delta)
   lastTimes = lastTimes.slice(-60)
@@ -69,8 +74,11 @@ const test = (time: number): void => {
   }
 
   // simulate an updating content element
-  panelContent.innerHTML =
-    `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td><br/>Delta: ${(averageTime / lastTimes.length).toFixed(2)}`
+  if(steps % 10 === 0) {
+    panelContent.innerHTML =
+      `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td></table>
+<br/>Delta: ${(averageTime / lastTimes.length).toFixed(2)}<br/>Time: ${(time - start).toFixed(0)}`
+  }
 
   lastTime = time
   requestAnimationFrame(test)

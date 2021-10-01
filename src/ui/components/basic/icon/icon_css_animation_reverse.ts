@@ -83,7 +83,6 @@ export const cooldown = (icon: Icon, time: number): void => {
       z-index: 10;
       font-size: 15px;
       font-weight: 1000;
-      mix-blend-mode: none;
       color: rgba(255,255,0,1);
       text-align: center;
     }
