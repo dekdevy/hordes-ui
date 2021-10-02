@@ -49,7 +49,7 @@ fastify.get('/icons', (req:fRequest, reply:fReply) => {
 // run the server
 export const start = async () : Promise<void> => {
   try {
-    await fastify.listen(port)
+    await fastify.listen(port, '0.0.0.0')
     console.log(`Web server listening on ${port}`)
   } catch (err) {
     fastify.log.error(err)

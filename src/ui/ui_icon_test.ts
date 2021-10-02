@@ -1,4 +1,4 @@
-import * as icon from 'ui/components/basic/icon/icon_canvas_update_hook_reverse_fast.js'
+import * as icon from 'ui/components/basic/icon/icon_canvas_update_hook_reverse_number.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
 import {element} from 'ui/utils.js'
 
@@ -8,7 +8,6 @@ panelHeader.innerHTML = '<h4>Performance Sheet</h4>'
 panelHeader.style.width = '100%'
 panelHeader.style.border = '1px outset black'
 const performanceSheet = document.createElement('div')
-const performanceData = element(performanceSheet, 'div')
 
 const deltaSpan = element(performanceSheet, 'p')
 const timeSpan = element(performanceSheet, 'p')
