@@ -29,11 +29,15 @@ let iconList: Icon[] = []
 // tick every frame
 let lastTimes: number[] = []
 let lastTime = 0
-let start: number
+const start = window.performance.now()
 let steps = 0
 const test = (time: number): void => {
-  if (!start)
-    start = time
+  // Calculate delta
+  const delta = window.performance.now() - lastTime
+  lastTimes.push(delta)
+  lastTimes = lastTimes.slice(-60)
+  const averageTime = lastTimes.reduce((current, avg) => avg + current)
+
   steps++
 
   const targetIconAmount = parseInt(iconAmount.value)
@@ -55,12 +59,6 @@ const test = (time: number): void => {
     iconList = iconList.slice(overhead - 1)
   }
 
-  // Calculate delta
-  const delta = time - lastTime
-  lastTimes.push(delta)
-  lastTimes = lastTimes.slice(-60)
-  const averageTime = lastTimes.reduce((current, avg) => avg + current)
-
   iconList.forEach(i => {
     if(icon.update(i, delta)) {
       console.log('restart')
@@ -70,11 +68,11 @@ const test = (time: number): void => {
 
   // Update performance data
   performanceData.innerHTML =
-    `<p>Avg. delta: ${(averageTime / lastTimes.length).toFixed(2)}ms</p>
+    `<p>Avg. delta: ${(averageTime / lastTimes.length).toFixed(4)}ms</p>
      <p>Time: ${(time - start).toFixed(0)}ms</p>
      <p>Steps: ${steps}</p>`
 
-  lastTime = time
+  lastTime = window.performance.now()
   requestAnimationFrame(test)
 }
 test(0)
