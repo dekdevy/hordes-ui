@@ -32,10 +32,24 @@ fastify.get('/', (req:fRequest, reply:fReply) => {
   `)
 })
 
+fastify.get('/icons', (req:fRequest, reply:fReply) => {
+  reply.type('text/html')
+  return reply.send(`
+    <html>
+      <head>
+      <title>Hordes.io Icon Testbed</title>
+      </head>
+      <body>
+        <script src='./ui_icon_test.js'></script>
+      </body>
+    </html> 
+  `)
+})
+
 // run the server
 export const start = async () : Promise<void> => {
   try {
-    await fastify.listen(port)
+    await fastify.listen(port, '0.0.0.0')
     console.log(`Web server listening on ${port}`)
   } catch (err) {
     fastify.log.error(err)

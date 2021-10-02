@@ -1,4 +1,5 @@
 import * as bar from 'ui/components/basic/bar/bar.js'
+import * as icon from 'ui/components/basic/icon/icon_canvas_update_hook.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
 
 // just a little more testing
@@ -17,22 +18,36 @@ const panelContent = document.createElement('div')
 panelContent.innerHTML = `<table><tr>HP</tr><tr>MP</tr><td>${maxHp}</td><td>${maxMp}</td>`
 
 // Draggable, resizable, closable panel
-panel.create(document.body, 100, 100, 300, 300, panelHeader, panelContent, true, true, true)
+panel.create(document.body, 0, 0, 300, 300, panelHeader, panelContent, true, true, true)
 
 // Draggable panel
-const dragHeader = document.createElement('div')
-dragHeader.innerText = 'DRAG ME, carefully!'
-panel.create(document.body, 500, 100, 300, 300, dragHeader, document.createElement('div'), true, false, false)
+const skillHeader = document.createElement('div')
+skillHeader.innerText = 'SKILL PANEL'
+skillHeader.style.textAlign = 'center'
+const skillPanel =
+  panel.create(document.body, 300, 50, 1600, 100, skillHeader, document.createElement('div'), true, false, false)
+skillPanel.elements.inner.style.textAlign = 'center'
+
+// Generate some skill icons
+const iconList: Icon[] = []
+for (const key of Array(10).keys()) {
+  const skillImage = document.createElement('img')
+  // Skill image to make it look super pretty
+  skillImage.setAttribute('src', `https://hordes.io/assets/ui/skills/${key}.webp?v=4652922`)
+  const skillIcon = icon.create(skillPanel.elements.inner, 40, 40, skillImage, true)
+  icon.cooldown(skillIcon, 20000)
+  iconList.push(skillIcon)
+}
 
 // Resizable panel
 const resizeHeader = document.createElement('div')
-resizeHeader.innerText = 'RESIZE ME, but very very carefully!'
+resizeHeader.innerText = 'RESIZE ME!'
 panel.create(document.body, 800, 400, 300, 200, resizeHeader, document.createElement('div'), false, true, false)
 
 // Closable panel
 const closeHeader = document.createElement('div')
-closeHeader.innerText = 'CLOSE ME, as hard as you want!'
-panel.create(document.body, 300, 700, 250, 200, closeHeader, document.createElement('div'), false, false, true)
+closeHeader.innerText = 'CLOSE ME!'
+panel.create(document.body, 300, 400, 250, 200, closeHeader, document.createElement('div'), false, false, true)
 
 // tick every frame
 const test = (time: number): void => {
@@ -46,7 +61,8 @@ const test = (time: number): void => {
   bar.set(mana, mp / maxMp, 'Peter\'s MP', `${mp}/${maxMp}`)
 
   // simulate an updating content element
-  panelContent.innerHTML = `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td>`
+  panelContent.innerHTML =
+    `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td></table> `
 
   requestAnimationFrame(test)
 }
