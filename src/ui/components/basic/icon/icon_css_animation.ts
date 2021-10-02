@@ -27,7 +27,8 @@ export const create = (
       },
       width   : width,
       height  : height,
-      cooldown: null
+      cooldown: null,
+      progress: null
     },
     elements: {
       outer: outer,

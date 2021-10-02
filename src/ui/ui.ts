@@ -1,5 +1,5 @@
 import * as bar from 'ui/components/basic/bar/bar.js'
-import * as icon from 'ui/components/basic/icon/icon_canvas.js'
+import * as icon from 'ui/components/basic/icon/icon_canvas_update_hook.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
 
 // just a little more testing
@@ -25,16 +25,18 @@ const skillHeader = document.createElement('div')
 skillHeader.innerText = 'SKILL PANEL'
 skillHeader.style.textAlign = 'center'
 const skillPanel =
-  panel.create(document.body, 300, 50, 500, 100, skillHeader, document.createElement('div'), true, false, false)
+  panel.create(document.body, 300, 50, 1600, 100, skillHeader, document.createElement('div'), true, false, false)
 skillPanel.elements.inner.style.textAlign = 'center'
 
-for (const _key of Array(10).keys()) {
+// Generate some skill icons
+const iconList: Icon[] = []
+for (const key of Array(10).keys()) {
   const skillImage = document.createElement('img')
   // Skill image to make it look super pretty
-  skillImage.setAttribute('src', `https://hordes.io/assets/ui/skills/${(Math.random() * 40).toFixed(0)}.webp?v=4652922`)
+  skillImage.setAttribute('src', `https://hordes.io/assets/ui/skills/${key}.webp?v=4652922`)
   const skillIcon = icon.create(skillPanel.elements.inner, 40, 40, skillImage, true)
-  icon.cooldown(skillIcon, 20)
-
+  icon.cooldown(skillIcon, 20000)
+  iconList.push(skillIcon)
 }
 
 // Resizable panel
@@ -48,17 +50,7 @@ closeHeader.innerText = 'CLOSE ME!'
 panel.create(document.body, 300, 400, 250, 200, closeHeader, document.createElement('div'), false, false, true)
 
 // tick every frame
-let lastTimes: number[] = []
-let lastTime = 0
-let start: number
-let steps = 0
 const test = (time: number): void => {
-  if(!start)
-    start = time
-  steps++
-  const delta = time - lastTime
-  lastTimes.push(delta)
-  lastTimes = lastTimes.slice(-60)
 
   // calculate some moving hp/mp numbers
   const hp = Math.round(maxHp * (Math.sin(time / 1000) * 0.5 + 0.5))
@@ -68,19 +60,10 @@ const test = (time: number): void => {
   bar.set(health, hp / maxHp, 'Peter\'s HP', `${hp}/${maxHp}`)
   bar.set(mana, mp / maxMp, 'Peter\'s MP', `${mp}/${maxMp}`)
 
-  let averageTime = 0.0
-  for(const t of lastTimes) {
-    averageTime = averageTime + t
-  }
-
   // simulate an updating content element
-  if(steps % 10 === 0) {
-    panelContent.innerHTML =
-      `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td></table>
-<br/>Delta: ${(averageTime / lastTimes.length).toFixed(2)}<br/>Time: ${(time - start).toFixed(0)}`
-  }
+  panelContent.innerHTML =
+    `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td></table> `
 
-  lastTime = time
   requestAnimationFrame(test)
 }
 test(0)

@@ -9,7 +9,11 @@ interface Icon {
     }
     width: number,
     height: number,
-    cooldown: number
+    cooldown?: number,
+    progress?: number,
+    progressAngle?: number
+    lastTimer?:string
+    overlayCtx?: CanvasRenderingContext2D
   }
   elements: {
     outer: HTMLElement,

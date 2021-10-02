@@ -50,79 +50,78 @@ export const create = (
   return icon
 }
 
-export const cooldown = (icon: Icon, time: number): void => {
-  icon.state.cooldown = time
+export const update = (icon: Icon, delta: number): boolean => {
+  const cooldownTime = icon.state.cooldown
+  const progress = icon.state.progress
+  if (progress >= cooldownTime) return
+
+  const newProgress = progress + delta
+
+  const overlayCtx = icon.state.overlayCtx
 
   const width = icon.state.width
   const height = icon.state.height
 
-  const number = element(icon.elements.outer, 'div')
-  number.style.position = 'absolute'
-  number.style.padding = '1px'
-  number.style.top = '25%'
-  number.style.left = '25%'
-  number.style.zIndex = '10'
-  number.style.fontSize = '15px'
-  number.style.fontWeight = '1000'
-  number.style.background = 'rgba(0,0,0,0.5)'
-  number.style.color = 'rgba(255,255,0,1)'
-  number.style.textAlign = 'center'
-  number.hidden = true
+  const elapsed = newProgress / cooldownTime
+  if (newProgress < cooldownTime) {
 
-  const canvas = document.createElement('canvas')
-  canvas.style.left = '0'
-  canvas.style.top = '0'
-  canvas.width = width
-  canvas.height = height
-  canvas.style.zIndex = '5'
-  canvas.style.position = 'absolute'
+    const newAngle = ((Math.PI * 2) * elapsed) - Math.PI / 2
+    if(!icon.state.progressAngle)
+      icon.state.progressAngle = -Math.PI / 2
+    const lastAngle = icon.state.progressAngle
+    if (newAngle - lastAngle > 0.01) {
 
-  const drawingCtx = canvas.getContext('2d')
-  let start: number
-  let lastAngle = -(Math.PI / 2)
-  const lastTimer = time.toFixed(1)
-  let steps = 0
-  const animationFrame = (timestamp: number) => {
-    if (!start)
-      start = timestamp
-    const elapsed = (timestamp - start) / (time * 1000)
-    if (elapsed < 1) {
-
-      const newAngle = ((Math.PI * 2) * elapsed) - Math.PI / 2
-      if (newAngle - lastAngle > 0.01) {
-        steps++
-
-        const timer = (time - time * elapsed).toFixed(1)
-        if (timer !== lastTimer) {
-          drawingCtx.clearRect(0, 0, width, height)
-          drawArc(drawingCtx, width / 2, height / 2, width * 0.7, -(Math.PI / 2), newAngle, 'rgba(0,0,0,0.5)')
-          drawText(drawingCtx, width / 2, height / 2, width / 2, timer, 'rgba(255,255,0,1)')
-        } else {
-          drawArc(drawingCtx, width / 2, height / 2, width * 0.7, lastAngle, newAngle, 'rgba(0,0,0,0.5)')
-        }
-        // drawingCtx.clearRect(0, 0, width, height)
-        // drawArc(drawingCtx, width / 2, height / 2, width * 0.7, -(Math.PI / 2), newAngle, 'rgba(0,0,0,0.5)')
-        // drawArc(drawingCtx, width / 2, height / 2, width * 0.7, lastAngle, newAngle, 'rgba(0,0,0,0.5)')
-        // drawArcWithLines(drawingCtx, width, height, elapsed)
-        lastAngle = newAngle
+      icon.state.progressAngle = newAngle
+      const timer = ((cooldownTime - cooldownTime * elapsed) / 1000).toFixed(1)
+      const lastTimer = icon.state.lastTimer
+      if (timer !== lastTimer) {
+        icon.state.lastTimer = timer
+        overlayCtx.clearRect(0, 0, width, height)
+        drawArc(overlayCtx, width / 2, height / 2, width * 0.7, -(Math.PI / 2), newAngle, 'rgba(0,0,0,0.5)')
+        drawText(overlayCtx, width / 2, height / 2, width / 2, timer, 'rgba(255,255,0,1)')
+      } else {
+        drawArc(overlayCtx, width / 2, height / 2, width * 0.7, lastAngle, newAngle, 'rgba(0,0,0,0.5)')
       }
-      window.requestAnimationFrame(animationFrame)
-    } else {
-      console.log('Steps:', steps)
-      canvas.remove()
-      number.remove()
+      // drawArcWithLines(drawingCtx, width, height, elapsed)
+      // drawArc(drawingCtx, width / 2, height / 2, width * 0.7, lastAngle, newAngle, 'rgba(0,0,0,0.5)')
     }
-  }
-  window.requestAnimationFrame(animationFrame)
 
-  icon.elements.outer.append(canvas)
+  } else {
+    overlayCtx.clearRect(0, 0, width, height)
+    return true
+  }
+
+  icon.state.progress = newProgress
+
+  return false
+}
+
+export const cooldown = (icon: Icon, time: number): void => {
+  icon.state.cooldown = time
+  icon.state.progress = 0
+  icon.state.progressAngle = -Math.PI / 2
+
+  const width = icon.state.width
+  const height = icon.state.height
+
+  const overlayCanvas = document.createElement('canvas')
+  overlayCanvas.style.left = '0'
+  overlayCanvas.style.top = '0'
+  overlayCanvas.width = width
+  overlayCanvas.height = height
+  overlayCanvas.style.zIndex = '5'
+  overlayCanvas.style.position = 'absolute'
+
+  icon.state.overlayCtx = overlayCanvas.getContext('2d')
+
+  icon.elements.outer.append(overlayCanvas)
 }
 
 function drawText(ctx: CanvasRenderingContext2D, x: number, y: number, width: number, text: string, color: string) {
   ctx.fillStyle = color
   ctx.textAlign = 'center'
   ctx.font = 'normal 1000 18px Unknown'
-  ctx.fillText(text, x, y + 4, width)
+  ctx.fillText(text, x, y + 6, width)
 }
 
 function drawArcWithLines(ctx: CanvasRenderingContext2D, width: number, height: number, progress: number) {
@@ -135,7 +134,7 @@ function drawArcWithLines(ctx: CanvasRenderingContext2D, width: number, height: 
   for (let i = 0; i < progress; i += 0.25) {
     ctx.lineTo(width / 2 + Math.sin(i * 2 * Math.PI - Math.PI) * width * -1, height / 2 + Math.cos(i * 2 * Math.PI - Math.PI) * height)
   }
-  ctx.lineTo(width / 2 + Math.sin(progress * 2 * Math.PI - Math.PI) * width * -1, height / 2+ Math.cos(progress * 2 * Math.PI - Math.PI) * height)
+  ctx.lineTo(width / 2 + Math.sin(progress * 2 * Math.PI - Math.PI) * width * -1, height / 2 + Math.cos(progress * 2 * Math.PI - Math.PI) * height)
   ctx.fill()
 
   ctx.beginPath()
