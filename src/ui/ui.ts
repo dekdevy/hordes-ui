@@ -54,7 +54,6 @@ const test = (time: number): void => {
   	if(stacks == 3){stacks = 0}else{stacks++}
   	cd--
   	icon.set(skill, "Invigorate", cd, stacks)
-
   }
   
   // update bar's

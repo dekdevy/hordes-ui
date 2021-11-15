@@ -13,8 +13,6 @@ export const create = (
   const cd_span = element(outer, 'span')
   const stacks_span = element(outer, 'span')
 
-  // for testing these are some basic hardcoded styles, we will replace it with css
-  outer.style.backgroundImage = '#222'
   outer.style.width = width.toString()
   outer.style.position = 'relative'
   outer.style.left = x.toString()
@@ -60,9 +58,6 @@ export const create = (
 
 export const set = (icon: Icon, name: string, cd: number, stacks: number): void => {
 
-  // // sanitize values
-  // fraction = Math.max(0, Math.min(1, fraction)) // clamp the fraction
-
   icon.elements.cd_span.innerHTML = cd.toString();
   if(stacks > 1){
     icon.elements.stacks_span.innerHTML = stacks.toString() 
@@ -71,6 +66,4 @@ export const set = (icon: Icon, name: string, cd: number, stacks: number): void 
     icon.elements.stacks_span.innerHTML = stacks.toString() 
     icon.elements.stacks_span.style.display = "none" 
   }
-  icon.name = name 
-
 }
