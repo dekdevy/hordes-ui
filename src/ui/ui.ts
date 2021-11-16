@@ -65,12 +65,12 @@ panel.create(document.body, 250, 50, 300, 300, panelHeader, panelContent, true, 
 // Draggable panel
 const dragHeader = document.createElement('div')
 dragHeader.innerText = 'DRAG ME, carefully!'
-panel.create(document.body, 600, 50, 300, 300, dragHeader, document.createElement('div'), true, false, false)
+panel.create(document.body, 600, 50, 300, 300, dragHeader, document.createElement('div'), true, false, true)
 
 // Resizable panel
 const resizeHeader = document.createElement('div')
 resizeHeader.innerText = 'RESIZE ME, but very very carefully!'
-panel.create(document.body, 950, 50, 300, 200, resizeHeader, document.createElement('div'), false, true, false)
+panel.create(document.body, 950, 50, 300, 200, resizeHeader, document.createElement('div'), false, true, true)
 
 let count = 0;
 // tick every frame

@@ -86,33 +86,36 @@ export const create = (
     })
   }
 
-  const resetPositionButton = element(outer, 'div')
-    // Stuff for CSS
-  resetPositionButton.innerHTML = '&#x2716;'
-  resetPositionButton.style.position = 'absolute'
-  resetPositionButton.style.top = '20'
-  resetPositionButton.style.right = '20'
-  resetPositionButton.style.width = '20'
-  resetPositionButton.style.height = '20'
-  resetPositionButton.style.height = '20'
-  resetPositionButton.style.textAlign = 'center'
-  resetPositionButton.style.cursor = 'pointer'
-  resetPositionButton.style.border = '1px inset black'
-  resetPositionButton.addEventListener('mousedown', resetPosition(panel))
-
-  const resetSizeButton = element(outer, 'div')
-    // Stuff for CSS
-  resetSizeButton.innerHTML = '&#x2716;'
-  resetSizeButton.style.position = 'absolute'
-  resetSizeButton.style.top = '40'
-  resetSizeButton.style.right = '40'
-  resetSizeButton.style.width = '20'
-  resetSizeButton.style.height = '20'
-  resetSizeButton.style.height = '20'
-  resetSizeButton.style.textAlign = 'center'
-  resetSizeButton.style.cursor = 'pointer'
-  resetSizeButton.style.border = '1px inset black'
-  resetSizeButton.addEventListener('mousedown', resetSize(panel))
+  if (draggable){
+    const resetPositionButton = element(outer, 'div')
+      // Stuff for CSS
+    resetPositionButton.innerHTML = 'Reset position'
+    resetPositionButton.style.position = 'absolute'
+    resetPositionButton.style.top = '20'
+    resetPositionButton.style.right = '20'
+    resetPositionButton.style.width = '110'
+    resetPositionButton.style.height = '20'
+    resetPositionButton.style.height = '20'
+    resetPositionButton.style.textAlign = 'center'
+    resetPositionButton.style.cursor = 'pointer'
+    resetPositionButton.style.border = '1px inset black'
+    resetPositionButton.addEventListener('mousedown', resetPosition(panel))
+  }
+  if (resizable) {
+    const resetSizeButton = element(outer, 'div')
+      // Stuff for CSS
+    resetSizeButton.innerHTML = 'Reset size'
+    resetSizeButton.style.position = 'absolute'
+    resetSizeButton.style.top = '40'
+    resetSizeButton.style.right = '40'
+    resetSizeButton.style.width = '90'
+    resetSizeButton.style.height = '20'
+    resetSizeButton.style.height = '20'
+    resetSizeButton.style.textAlign = 'center'
+    resetSizeButton.style.cursor = 'pointer'
+    resetSizeButton.style.border = '1px inset black'
+    resetSizeButton.addEventListener('mousedown', resetSize(panel))
+  }
 
   return panel
 }
