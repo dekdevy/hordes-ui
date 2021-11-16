@@ -15,13 +15,11 @@ export const create = (
   // create elements
   const outer = element(parent, 'div')
 
-  // size of border to resize panel
-  const resizeBorderSize = 15
-
   // Inline styles, should go to CSS
   outer.style.position = 'absolute'
   outer.style.border = '2px inset black'
   outer.style.userSelect = 'none'
+  outer.draggable = false
 
   // Keep on screen
   x = Math.max(0, Math.min(screen.width, x))
@@ -51,73 +49,27 @@ export const create = (
   outer.append(header)
   outer.append(inner)
 
-  const downHandlers: { (downEvent: MouseEvent): void; (downEvent: MouseEvent): void }[] = []
+  if (draggable) outer.addEventListener('mousedown', dragPanel(panel))
 
-  if (draggable) {
-    // Is by default false, but just to make sure it's intended to be false
-    outer.draggable = false
-    // if mouse down, move the panel
-    downHandlers.push((downEvent: MouseEvent) => {
-      // '&' is intended to check if first bit is set; mouseEvent.buttons will return a combined number
-      // See: https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons
-      if (downEvent.buttons & 1 && (
-        (downEvent.offsetX > resizeBorderSize ||
-          downEvent.offsetX < (panel.state.width - resizeBorderSize)) ||
-        (downEvent.offsetY > resizeBorderSize ||
-          downEvent.offsetY < (panel.state.height - resizeBorderSize)))) {
-        // Should go to CSS stuff
-        outer.style.cursor = 'grabbing'
-        outer.onmousemove = moveEvent => {
-          // Make sure mouse is still pressed
-          if (moveEvent.buttons & 1) {
-            panel.state.x += moveEvent.movementX
-            panel.state.y += moveEvent.movementY
-            outer.style.left = panel.state.x.toString()
-            outer.style.top = panel.state.y.toString()
-          }
-        }
-      }
-    })
-  }
-
-  // TODO: If you move the mouse too fast you loose control
-  // Attaching to document mouseMove might solve it, but the each panel would affect the global handler
   if (resizable) {
-    downHandlers.push((downEvent: MouseEvent) => {
-      if (downEvent.buttons & 1) {
-        outer.style.cursor = 'grabbing'
-
-        let moveHandler = null
-        if (downEvent.offsetX <= resizeBorderSize || downEvent.offsetX >= (panel.state.width - resizeBorderSize)) {
-          moveHandler = (moveEvent: MouseEvent) => {
-            // Make sure mouse is still pressed
-            if (moveEvent.buttons & 1) {
-              panel.state.width += moveEvent.movementX
-              outer.style.width = panel.state.width.toString()
-            }
-          }
-        } else if (downEvent.offsetY <= resizeBorderSize || downEvent.offsetY >= (panel.state.height - resizeBorderSize)) {
-          moveHandler = (moveEvent: MouseEvent) => {
-            // Make sure mouse is still pressed
-            if (moveEvent.buttons & 1) {
-              panel.state.height += moveEvent.movementY
-              outer.style.height = panel.state.height.toString()
-            }
-          }
-        }
-
-        if (moveHandler) {
-          outer.onmousemove = moveHandler
-        }
-      } else {
-        outer.style.cursor = null
-      }
-    })
+    const resizeButton = element(outer, 'div')
+    // Stuff for CSS
+    resizeButton.innerHTML = '&#129981;'
+    resizeButton.style.position = 'absolute'
+    resizeButton.style.bottom = '0'
+    resizeButton.style.right = '0'
+    resizeButton.style.width = '20'
+    resizeButton.style.height = '20'
+    resizeButton.style.height = '20'
+    resizeButton.style.textAlign = 'right'
+    resizeButton.style.cursor = 'pointer'
+    resizeButton.addEventListener('mousedown', resizePanel(panel))
   }
 
   if (closable) {
     const closeButton = element(outer, 'div')
     // Stuff for CSS
+    closeButton.innerHTML = '&#x2716;'
     closeButton.style.position = 'absolute'
     closeButton.style.top = '0'
     closeButton.style.right = '0'
@@ -127,29 +79,71 @@ export const create = (
     closeButton.style.textAlign = 'center'
     closeButton.style.cursor = 'pointer'
     closeButton.style.border = '1px inset black'
-    closeButton.innerHTML = '&#x2716;'
-    closeButton.onclick = () => {
-      outer.hidden = true
-    }
-  }
-
-  // go through handlers and execute them
-  outer.onmousedown = downEvent => {
-    downHandlers.forEach(handler => {
-      handler(downEvent)
+    closeButton.addEventListener('click', function () {
+      (this as HTMLElement).parentElement.hidden = true
     })
   }
 
-  // if mouse is not pressed remove move handler
-  outer.onmouseup = () => {
-    outer.style.cursor = null
-    outer.onmousemove = null
-  }
-  // // if mouse up is not fired, but mouse left panel, remove move handler
-  // outer.onmouseleave = () => {
-  //   outer.style.cursor = null
-  //   outer.onmousemove = null
-  // }
-
   return panel
+}
+
+// if mouse down, move the panel
+function dragPanel(panel: Panel) {
+  // '&' is intended to check if first bit is set; mouseEvent.buttons will return a combined number
+  // See: https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons
+  return function (downEvent: MouseEvent) {
+    const element = (this as HTMLElement)
+
+    if (downEvent.buttons & 1) {
+      // Should go to CSS stuff
+      element.style.cursor = 'grabbing'
+      const mouseMove = (moveEvent: MouseEvent) => {
+        // Make sure mouse is still pressed
+        if (moveEvent.buttons & 1) {
+          panel.state.x += moveEvent.movementX
+          panel.state.y += moveEvent.movementY
+          element.style.left = panel.state.x.toString()
+          element.style.top = panel.state.y.toString()
+        }
+      }
+      document.addEventListener('mousemove', mouseMove)
+
+      const mouseUp = () => {
+        document.removeEventListener('mousemove', mouseMove)
+        document.removeEventListener('mouseup', mouseUp)
+
+        element.style.cursor = null
+      }
+      document.addEventListener('mouseup', mouseUp)
+    }
+
+    downEvent.stopImmediatePropagation()
+  }
+}
+
+function resizePanel(panel: Panel) {
+
+  return function (downEvent: MouseEvent) {
+    if (downEvent.buttons & 1) {
+      const element = (downEvent.target as HTMLElement).parentElement
+      element.style.cursor = 'grabbing'
+
+      const mouseMove = (moveEvent: MouseEvent) => {
+        panel.state.width += moveEvent.movementX
+        element.style.width = panel.state.width.toString()
+        panel.state.height += moveEvent.movementY
+        element.style.height = panel.state.height.toString()
+      }
+      document.addEventListener('mousemove', mouseMove)
+
+      const mouseUp = () => {
+        document.removeEventListener('mousemove', mouseMove)
+        document.removeEventListener('mouseup', mouseUp)
+
+        element.style.cursor = null
+      }
+      document.addEventListener('mouseup', mouseUp)
+      downEvent.stopImmediatePropagation()
+    }
+  }
 }

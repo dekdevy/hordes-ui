@@ -1,6 +1,14 @@
 import * as bar from 'ui/components/basic/bar/bar.js'
 import * as icon from 'ui/components/basic/icon/icon.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
+import {element} from 'ui/utils.js'
+
+//TEST DATA DISPLAY
+const performanceSheet = document.createElement('div')
+
+const deltaSpan = element(performanceSheet, 'p')
+const timeSpan = element(performanceSheet, 'p')
+const stepsSpan = element(performanceSheet, 'p')
 
 // just a little more testing
 const maxHp = 1900
