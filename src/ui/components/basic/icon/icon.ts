@@ -42,11 +42,13 @@ export const create = (
   stacks_span.style.textAlign = 'center'
   stacks_span.style.backgroundColor = '#6495ed73'
 
-  return {
+
+   const icon: Icon = {
     name : "",
     stacks : 0,
     cd: 0,
-
+    x: x,
+    y: y,
     elements: {
       outer,
       inner,
@@ -55,7 +57,9 @@ export const create = (
     }
   }
 
-  outer.addEventListener('mousedown', dragIcon)
+  outer.addEventListener('mousedown', dragIcon(icon))
+
+  return icon
 }
 
 export const set = (icon: Icon, name: string, cd: number, stacks: number): void => {
@@ -70,34 +74,34 @@ export const set = (icon: Icon, name: string, cd: number, stacks: number): void 
   }
 }
 
-function dragIcon(downEvent: MouseEvent) {
+function dragIcon(icon: Icon) {
   console.log("mouse down");
-  if (downEvent.buttons & 1) {
+    return function (downEvent: MouseEvent) {
     const element = (this as HTMLElement)
-    // Should go to CSS stuff
-    element.style.cursor = 'grabbing'
-    element.style.position = 'absolute'
-    element.style.left = element.offsetLeft.toString()
-    element.style.top = element.offsetTop.toString()
 
-    const mouseMove = (moveEvent: MouseEvent) => {
-      if (moveEvent.buttons & 1) {
-        element.style.left = (parseInt(element.style.left.replace('px', '')) + moveEvent.movementX).toString()
-        element.style.top = (parseInt(element.style.top.replace('px', '')) + moveEvent.movementY).toString()
+    if (downEvent.buttons & 1) {
+      // Should go to CSS stuff
+      element.style.cursor = 'grabbing'
+      const mouseMove = (moveEvent: MouseEvent) => {
+        // Make sure mouse is still pressed
+        if (moveEvent.buttons & 1) {
+          icon.x += moveEvent.movementX
+          icon.y += moveEvent.movementY
+          element.style.left = icon.x.toString()
+          element.style.top = icon.y.toString()
+        }
       }
-    }
-    document.addEventListener('mousemove', mouseMove)
+      document.addEventListener('mousemove', mouseMove)
 
-    const mouseUp = () => {
-      document.removeEventListener('mousemove', mouseMove)
-      document.removeEventListener('mouseup', mouseUp)
+      const mouseUp = () => {
+        document.removeEventListener('mousemove', mouseMove)
+        document.removeEventListener('mouseup', mouseUp)
 
-      element.style.cursor = null
-      element.style.position = 'relative'
-      element.style.left = null
-      element.style.top = null
+        element.style.cursor = null
+      }
+      document.addEventListener('mouseup', mouseUp)
     }
-    document.addEventListener('mouseup', mouseUp)
+
     downEvent.stopImmediatePropagation()
   }
 }

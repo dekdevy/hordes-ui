@@ -3,6 +3,8 @@ interface Icon {
   name: string,
   stacks: number,
   cd: number,
+  x: number,
+  y: number
 
   elements: {
     outer: HTMLElement,
