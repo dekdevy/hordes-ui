@@ -28,6 +28,8 @@ export const create = (
   const panel: Panel = {
     defaultX: x,
     defaultY: y,
+    defaultWidth: width,
+    defaultHeight: height,
     state   : {
       x     : x,
       y     : y,
@@ -84,19 +86,33 @@ export const create = (
     })
   }
 
-  const resetButton = element(outer, 'div')
+  const resetPositionButton = element(outer, 'div')
     // Stuff for CSS
-  resetButton.innerHTML = '&#x2716;'
-  resetButton.style.position = 'absolute'
-  resetButton.style.top = '20'
-  resetButton.style.right = '20'
-  resetButton.style.width = '20'
-  resetButton.style.height = '20'
-  resetButton.style.height = '20'
-  resetButton.style.textAlign = 'center'
-  resetButton.style.cursor = 'pointer'
-  resetButton.style.border = '1px inset black'
-  resetButton.addEventListener('mousedown', resetPosition(panel))
+  resetPositionButton.innerHTML = '&#x2716;'
+  resetPositionButton.style.position = 'absolute'
+  resetPositionButton.style.top = '20'
+  resetPositionButton.style.right = '20'
+  resetPositionButton.style.width = '20'
+  resetPositionButton.style.height = '20'
+  resetPositionButton.style.height = '20'
+  resetPositionButton.style.textAlign = 'center'
+  resetPositionButton.style.cursor = 'pointer'
+  resetPositionButton.style.border = '1px inset black'
+  resetPositionButton.addEventListener('mousedown', resetPosition(panel))
+
+  const resetSizeButton = element(outer, 'div')
+    // Stuff for CSS
+  resetSizeButton.innerHTML = '&#x2716;'
+  resetSizeButton.style.position = 'absolute'
+  resetSizeButton.style.top = '40'
+  resetSizeButton.style.right = '40'
+  resetSizeButton.style.width = '20'
+  resetSizeButton.style.height = '20'
+  resetSizeButton.style.height = '20'
+  resetSizeButton.style.textAlign = 'center'
+  resetSizeButton.style.cursor = 'pointer'
+  resetSizeButton.style.border = '1px inset black'
+  resetSizeButton.addEventListener('mousedown', resetSize(panel))
 
   return panel
 }
@@ -175,6 +191,25 @@ function resetPosition(panel: Panel) {
 
       panel.state.x = panel.defaultX
       panel.state.y = panel.defaultY
+
+      downEvent.stopImmediatePropagation()
+    }
+  }
+}
+
+function resetSize(panel: Panel) {
+
+  return function (downEvent: MouseEvent) {
+    if (downEvent.buttons & 1) {
+      const element = (downEvent.target as HTMLElement).parentElement
+
+      console.log("ResetSize!" + "Default width: " + panel.defaultWidth + " Default height: "+panel.defaultHeight)
+
+        panel.state.width = panel.defaultWidth
+        panel.state.height = panel.defaultHeight
+
+        element.style.width = panel.state.width.toString()
+        element.style.height = panel.state.height.toString()
 
       downEvent.stopImmediatePropagation()
     }
