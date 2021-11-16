@@ -84,6 +84,20 @@ export const create = (
     })
   }
 
+  const resetButton = element(outer, 'div')
+    // Stuff for CSS
+  resetButton.innerHTML = '&#x2716;'
+  resetButton.style.position = 'absolute'
+  resetButton.style.top = '20'
+  resetButton.style.right = '20'
+  resetButton.style.width = '20'
+  resetButton.style.height = '20'
+  resetButton.style.height = '20'
+  resetButton.style.textAlign = 'center'
+  resetButton.style.cursor = 'pointer'
+  resetButton.style.border = '1px inset black'
+  resetButton.addEventListener('mousedown', resetPosition(panel))
+
   return panel
 }
 
@@ -147,3 +161,23 @@ function resizePanel(panel: Panel) {
     }
   }
 }
+
+function resetPosition(panel: Panel) {
+
+  return function (downEvent: MouseEvent) {
+    if (downEvent.buttons & 1) {
+      const element = (downEvent.target as HTMLElement).parentElement
+
+      console.log("ResetPosition!" + "Default X: " + panel.defaultX + " Default Y: "+panel.defaultY)
+
+      element.style.left = panel.defaultX.toString()
+      element.style.top = panel.defaultY.toString()
+
+      panel.state.x = panel.defaultX
+      panel.state.y = panel.defaultY
+
+      downEvent.stopImmediatePropagation()
+    }
+  }
+}
+

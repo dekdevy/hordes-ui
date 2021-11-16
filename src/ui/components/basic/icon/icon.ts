@@ -71,6 +71,7 @@ export const set = (icon: Icon, name: string, cd: number, stacks: number): void 
 }
 
 function dragIcon(downEvent: MouseEvent) {
+  console.log("mouse down");
   if (downEvent.buttons & 1) {
     const element = (this as HTMLElement)
     // Should go to CSS stuff
