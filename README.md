@@ -24,7 +24,7 @@ These components represent the basic building blocks of the UI. They are used by
 |Component|State|Description
 |---|---|---|
 |Bar|Started|A vertical bar, able to change width based on a fraction, change color, display a left, right, and center text.|
-|Icon|-|A basic square which can be used to display items, buffs and skills. Displays an image, a cooldown overlay, a big centered number, and numbers in the coners. Can drag / receive drop.|
+|Icon|Started|A basic square which can be used to display items, buffs and skills. Displays an image, a cooldown overlay, a big centered number, and numbers in the coners. Can drag / receive drop.|
 |Panel|-|A panel for free floating UI elements, can display a header, a close button, optionally have a draggable resize corner, be movable and store/restore its position.|
 
 ### Advanced components

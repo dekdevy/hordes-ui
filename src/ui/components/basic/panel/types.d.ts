@@ -1,6 +1,8 @@
 interface Panel {
   defaultX: number,
-  defaultY: number
+  defaultY: number,
+  defaultWidth: number,
+  defaultHeight: number
   state: {
     x: number,
     y: number,

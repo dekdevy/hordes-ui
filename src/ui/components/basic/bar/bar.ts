@@ -26,6 +26,7 @@ export const create = (
   textRight.style.position = 'absolute'
   textRight.style.top = '0'
   textRight.style.right = '0'
+  outer.style.marginBottom = '20px'
 
   return {
     fraction : 1,
