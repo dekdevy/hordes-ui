@@ -18,7 +18,7 @@ export const create = (
   outer.style.left = x.toString()
   outer.style.top = y.toString()
   inner.style.backgroundColor = '#97d7ea'
-  inner.style.backgroundImage = "url('https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png')"
+  inner.style.backgroundImage = 'url(\'https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png\')'
   inner.style.height = height.toString()
 
   //CD - TYPE:SPAN - Display the cooldown/remaining duration of the skill/buff/debuff
@@ -42,13 +42,12 @@ export const create = (
   stacks_span.style.textAlign = 'center'
   stacks_span.style.backgroundColor = '#6495ed73'
 
-
-   const icon: Icon = {
-    name : "",
-    stacks : 0,
-    cd: 0,
-    x: x,
-    y: y,
+  const icon: Icon = {
+    name    : '',
+    stacks  : 0,
+    cd      : 0,
+    x       : x,
+    y       : y,
     elements: {
       outer,
       inner,
@@ -64,19 +63,19 @@ export const create = (
 
 export const set = (icon: Icon, name: string, cd: number, stacks: number): void => {
 
-  icon.elements.cd_span.innerHTML = cd.toString();
-  if(stacks > 1){
-    icon.elements.stacks_span.innerHTML = stacks.toString() 
-    icon.elements.stacks_span.style.display = ""  
+  icon.elements.cd_span.innerHTML = cd.toString()
+  if(stacks > 1) {
+    icon.elements.stacks_span.innerHTML = stacks.toString()
+    icon.elements.stacks_span.style.display = ''
   }else{
-    icon.elements.stacks_span.innerHTML = stacks.toString() 
-    icon.elements.stacks_span.style.display = "none" 
+    icon.elements.stacks_span.innerHTML = stacks.toString()
+    icon.elements.stacks_span.style.display = 'none'
   }
 }
 
 function dragIcon(icon: Icon) {
-  console.log("mouse down");
-    return function (downEvent: MouseEvent) {
+  console.log('mouse down')
+  return function (downEvent: MouseEvent) {
     const element = (this as HTMLElement)
 
     if (downEvent.buttons & 1) {

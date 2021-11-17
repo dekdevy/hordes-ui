@@ -1,14 +1,6 @@
 import * as bar from 'ui/components/basic/bar/bar.js'
 import * as icon from 'ui/components/basic/icon/icon.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
-import {element} from 'ui/utils.js'
-
-//TEST DATA DISPLAY
-const performanceSheet = document.createElement('div')
-
-const deltaSpan = element(performanceSheet, 'p')
-const timeSpan = element(performanceSheet, 'p')
-const stepsSpan = element(performanceSheet, 'p')
 
 // just a little more testing
 const maxHp = 1900
@@ -19,34 +11,32 @@ let stacks = 0
 let cd = 60
 
 const skill = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill, "Invigorate", cd,stacks)
+icon.set(skill, 'Invigorate', cd, stacks)
 //STRESS TEST ICONS
 const skill1 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill1, "Invigorate", cd,stacks)
+icon.set(skill1, 'Invigorate', cd, stacks)
 const skill2 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill2, "Invigorate", cd,stacks)
+icon.set(skill2, 'Invigorate', cd, stacks)
 const skill3 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill3, "Invigorate", cd,stacks)
+icon.set(skill3, 'Invigorate', cd, stacks)
 const skill4 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill4, "Invigorate", cd,stacks)
+icon.set(skill4, 'Invigorate', cd, stacks)
 const skill5 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill5, "Invigorate", cd,stacks)
+icon.set(skill5, 'Invigorate', cd, stacks)
 const skill6 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill6, "Invigorate", cd,stacks)
+icon.set(skill6, 'Invigorate', cd, stacks)
 const skill7 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill7, "Invigorate", cd,stacks)
+icon.set(skill7, 'Invigorate', cd, stacks)
 const skill8 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill8, "Invigorate", cd,stacks)
+icon.set(skill8, 'Invigorate', cd, stacks)
 const skill9 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill9, "Invigorate", cd,stacks)
+icon.set(skill9, 'Invigorate', cd, stacks)
 const skill10 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill10, "Invigorate", cd,stacks)
+icon.set(skill10, 'Invigorate', cd, stacks)
 const skill11 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill11, "Invigorate", cd,stacks)
+icon.set(skill11, 'Invigorate', cd, stacks)
 const skill12 = icon.create(document.body, 42, 42, 42, 42)
-icon.set(skill12, "Invigorate", cd,stacks)
-
-
+icon.set(skill12, 'Invigorate', cd, stacks)
 
 const health = bar.create(document.body, 50, 300, 300, 30)
 const mana = bar.create(document.body, 50, 300, 300, 30)
@@ -72,7 +62,7 @@ const resizeHeader = document.createElement('div')
 resizeHeader.innerText = 'RESIZE ME, but very very carefully!'
 panel.create(document.body, 950, 50, 300, 200, resizeHeader, document.createElement('div'), false, true, true)
 
-let count = 0;
+let count = 0
 // tick every frame
 const test = (time: number): void => {
 
@@ -80,24 +70,28 @@ const test = (time: number): void => {
   const hp = Math.round(maxHp * (Math.sin(time / 1000) * 0.5 + 0.5))
   const mp = Math.round(maxMp * (Math.sin(time / 1000) * 0.5 + 0.5))
 
-  if(count % 144 == 0){//Just to test, my monitor is 144hz so %144 I get second by second
-  	if(stacks == 3){stacks = 0}else{stacks++}
-  	cd--
-  	icon.set(skill, "Invigorate", cd, stacks)
-    icon.set(skill1, "Invigorate", cd, stacks)
-    icon.set(skill2, "Invigorate", cd, stacks)
-    icon.set(skill3, "Invigorate", cd, stacks)
-    icon.set(skill4, "Invigorate", cd, stacks)
-    icon.set(skill5, "Invigorate", cd, stacks)
-    icon.set(skill6, "Invigorate", cd, stacks)
-    icon.set(skill7, "Invigorate", cd, stacks)
-    icon.set(skill8, "Invigorate", cd, stacks)
-    icon.set(skill9, "Invigorate", cd, stacks)
-    icon.set(skill10, "Invigorate", cd, stacks)
-    icon.set(skill11, "Invigorate", cd, stacks)
-    icon.set(skill12, "Invigorate", cd, stacks)
+  if(count % 144 == 0) { //Just to test, my monitor is 144hz so %144 I get second by second
+    if(stacks == 3) {
+      stacks = 0
+    }else{
+      stacks++
+    }
+    cd--
+    icon.set(skill, 'Invigorate', cd, stacks)
+    icon.set(skill1, 'Invigorate', cd, stacks)
+    icon.set(skill2, 'Invigorate', cd, stacks)
+    icon.set(skill3, 'Invigorate', cd, stacks)
+    icon.set(skill4, 'Invigorate', cd, stacks)
+    icon.set(skill5, 'Invigorate', cd, stacks)
+    icon.set(skill6, 'Invigorate', cd, stacks)
+    icon.set(skill7, 'Invigorate', cd, stacks)
+    icon.set(skill8, 'Invigorate', cd, stacks)
+    icon.set(skill9, 'Invigorate', cd, stacks)
+    icon.set(skill10, 'Invigorate', cd, stacks)
+    icon.set(skill11, 'Invigorate', cd, stacks)
+    icon.set(skill12, 'Invigorate', cd, stacks)
   }
-  
+
   // update bar's
   bar.set(health, hp / maxHp, 'Peter\'s HP', `${hp}/${maxHp}`)
   bar.set(mana, mp / maxMp, 'Peter\'s MP', `${mp}/${maxMp}`)
@@ -106,6 +100,6 @@ const test = (time: number): void => {
   panelContent.innerHTML = `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td>`
 
   requestAnimationFrame(test)
-  count++;
+  count++
 }
 test(0)

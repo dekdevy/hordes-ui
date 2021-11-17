@@ -26,11 +26,11 @@ export const create = (
   y = Math.max(0, Math.min(screen.height, y))
 
   const panel: Panel = {
-    defaultX: x,
-    defaultY: y,
-    defaultWidth: width,
+    defaultX     : x,
+    defaultY     : y,
+    defaultWidth : width,
     defaultHeight: height,
-    state   : {
+    state        : {
       x     : x,
       y     : y,
       width : width,
@@ -86,9 +86,9 @@ export const create = (
     })
   }
 
-  if (draggable){
+  if (draggable) {
     const resetPositionButton = element(outer, 'div')
-      // Stuff for CSS
+    // Stuff for CSS
     resetPositionButton.innerHTML = 'Reset position'
     resetPositionButton.style.position = 'absolute'
     resetPositionButton.style.top = '20'
@@ -103,7 +103,7 @@ export const create = (
   }
   if (resizable) {
     const resetSizeButton = element(outer, 'div')
-      // Stuff for CSS
+    // Stuff for CSS
     resetSizeButton.innerHTML = 'Reset size'
     resetSizeButton.style.position = 'absolute'
     resetSizeButton.style.top = '40'
@@ -187,7 +187,7 @@ function resetPosition(panel: Panel) {
     if (downEvent.buttons & 1) {
       const element = (downEvent.target as HTMLElement).parentElement
 
-      console.log("ResetPosition!" + "Default X: " + panel.defaultX + " Default Y: "+panel.defaultY)
+      console.log('ResetPosition!' + 'Default X: ' + panel.defaultX + ' Default Y: '+panel.defaultY)
 
       element.style.left = panel.defaultX.toString()
       element.style.top = panel.defaultY.toString()
@@ -206,13 +206,13 @@ function resetSize(panel: Panel) {
     if (downEvent.buttons & 1) {
       const element = (downEvent.target as HTMLElement).parentElement
 
-      console.log("ResetSize!" + "Default width: " + panel.defaultWidth + " Default height: "+panel.defaultHeight)
+      console.log('ResetSize!' + 'Default width: ' + panel.defaultWidth + ' Default height: '+panel.defaultHeight)
 
-        panel.state.width = panel.defaultWidth
-        panel.state.height = panel.defaultHeight
+      panel.state.width = panel.defaultWidth
+      panel.state.height = panel.defaultHeight
 
-        element.style.width = panel.state.width.toString()
-        element.style.height = panel.state.height.toString()
+      element.style.width = panel.state.width.toString()
+      element.style.height = panel.state.height.toString()
 
       downEvent.stopImmediatePropagation()
     }
