@@ -32,8 +32,8 @@ These components implement unique elements as well as basic components to genera
 
 |Component|State|Description
 |---|---|---|
-|Char Panel|-|Stats and currently equipped items.|
-|Skill Panel|-|List of known skills using icons, draggable into the Skill Bar.|
+|Char Panel|Done|Stats and currently equipped items.|
+|Skill Panel|Started|List of known skills using icons, draggable into the Skill Bar.|
 |PVP Panel|-|Shows players pvp progress / kills / fame last week, as well as arena rating and ranking.|
 |Inventory|-|All items owned by the player, current gold / elixir points, and a filter for items by name.|
 |Skill Bar|-|A list of draggable icons representing the current player skills. Can be vertical/horizontal and have inputs for row/col size.|
