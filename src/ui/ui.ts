@@ -64,42 +64,43 @@ panel.create(document.body, 950, 50, 300, 200, resizeHeader, document.createElem
 
 //Player object it's meant to fill this data:
 const player = {
-    name: "Blochflame",
-    level: 45,
-    class: "Archer",
-    faction: "Vanguard",
-    prestige: 8898,
-    rating: 1800,
-    medals: 999,
-    strenght: 10,
-    stamina: 999,
-    dexterity: 999,
-    intelligence: 10,
-    wisdom: 10,
-    luck: 10,
-    stat_points: 0,
-    hp: 1555,
-    hp_reg: 555,
-    mp: 555,
-    mp_reg: 555,
-    defense: 555,
-    block: 555,
-    min: 555,
-    max: 555,
-    atk_speed: 555,
-    critical: 555,
-    haste: 555,
-    mov_speed: 555,
-    bag_slots: 555,
-    item_find: 555,
-    gear_score: 555,
-    pvp_lvl: 555
+  name        : 'Blochflame',
+  level       : 45,
+  class       : 'Archer',
+  faction     : 'Vanguard',
+  prestige    : 8898,
+  rating      : 1800,
+  medals      : 999,
+  strenght    : 10,
+  stamina     : 999,
+  dexterity   : 999,
+  intelligence: 10,
+  wisdom      : 10,
+  luck        : 10,
+  stat_points : 0,
+  hp          : 1555,
+  hp_reg      : 555,
+  mp          : 555,
+  mp_reg      : 555,
+  defense     : 555,
+  block       : 555,
+  min         : 555,
+  max         : 555,
+  atk_speed   : 555,
+  critical    : 555,
+  haste       : 555,
+  mov_speed   : 555,
+  bag_slots   : 555,
+  item_find   : 555,
+  gear_score  : 555,
+  pvp_lvl     : 555
 
-};
+}
 
 // setup some header and content elements for the panel
+//I don't like to define the styles here, we should create types of panels and with the types set the properties of the obj in the type itself
 const charPanelHeader = document.createElement('div')
-charPanelHeader.innerHTML = '<h4>'+player.name+'\'s Character</h4>'
+charPanelHeader.innerHTML = `<h4>${player.name}'s Character</h4>`
 charPanelHeader.style.width = '100%'
 charPanelHeader.style.border = '1px outset black'
 const charPanelContent = document.createElement('div')
@@ -107,16 +108,187 @@ charPanelContent.style.width = '60%'
 charPanelContent.style.paddingLeft = '5%'
 charPanelContent.style.paddingTop = '2%'
 charPanelContent.style.display = 'contents'
-const base_info_and_stats = `<div style="display:flex;"><table style="undefined;table-layout: fixed; width: 65%; border-style: double;"> <colgroup> <col style="width: 101px"> <col style="width: 32px"> <col style="width: 200px"> </colgroup> <tbody> <tr> <td>Name</td> <td></td> <td>`+player.name+`</td> </tr> <tr> <td>Level</td> <td></td> <td>`+player.level+`</td> </tr> <tr> <td>Class</td> <td><img src="https://hordes.io/assets/ui/classes/2.webp?v=4652922" width="20" height="20"></td> <td>`+player.class+`</td> </tr> <tr> <td>Faction</td> <td><img src="https://hordes.io/assets/ui/factions/0.webp?v=4652922" width="20" height="20"></td> <td>`+player.faction+`</td> </tr> <tr> <td>Prestige</td> <td><img src="https://hordes.io/assets/ui/currency/prestige.svg?v=4652922" width="20" height="20"></td> <td>`+player.prestige+`</td> </tr> <tr> <td>Rating</td> <td><img src="https://hordes.io/assets/ui/elo/2.svg?v=4652922" width="20" height="20"></td> <td>`+player.rating+`</td> </tr> <tr> <td>Medals</td> <td><img src="https://hordes.io/assets/ui/currency/medal.svg?v=4652922" width="20" height="20"></td> <td>`+player.medals+`</td> </tr> </tbody> </table><table style="undefined;table-layout: fixed; width: 35%; border-style: double;"> <colgroup> <col style="width: 200px"> <col style="width: 35px"> </colgroup> <tbody> <tr> <td>Strenght</td> <td>`+player.strenght+`</td> </tr> <tr> <td>Stamina</td> <td>`+player.stamina+`</td> </tr> <tr> <td>Dexterity</td> <td>`+player.dexterity+`</td> </tr> <tr> <td>Intelligence</td> <td>`+player.intelligence+`</td> </tr> <tr> <td>Wisdom</td> <td>`+player.wisdom+`</td> </tr> <tr> <td>Luck</td> <td>`+player.luck+`</td> </tr> <tr> <td>Stat Points</td> <td>`+player.stat_points+`</td> </tr> </tbody> </table></div>`
-const skill_bar = `<div id="skill_bar_div" style="display:flex;"></div>`
-const base_info_and_stats_2 = `<div style="display:flex;"> <table style="undefined;table-layout: fixed; width: 65%; border-style: double;"> <colgroup> <col style="width: 148px"> <col style="width: 45px"> </colgroup> <tbody> <tr> <td>HP</td> <td>`+player.hp+`</td> </tr> <tr> <td>HP Reg./5s</td> <td>`+player.hp_reg+`</td> </tr> <tr> <td>MP</td> <td>`+player.mp+`</td> </tr> <tr> <td>MP Reg./5s</td> <td>`+player.mp_reg+`</td> </tr> <tr> <td>Defense</td> <td>`+player.defense+`</td> </tr> <tr> <td>Block</td> <td>`+player.block+`%</td> </tr> </tbody> </table> <table style="undefined;table-layout: fixed; width: 60%; border-style: double;"> <colgroup> <col style="width: 148px"> <col style="width: 45px"> </colgroup> <tbody> <tr> <td>Min Dmg.</td> <td>`+player.min+`</td> </tr> <tr> <td>Max Dmg.</td> <td>`+player.max+`</td> </tr> <tr> <td>Attack Spd.</td> <td>`+player.atk_speed+`</td> </tr> <tr> <td>Critical</td> <td>`+player.critical+`%</td> </tr> <tr> <td>Haste</td> <td>`+player.haste+`%</td> </tr> </tbody> </table> <table style="undefined;table-layout: fixed; width: 60%; border-style: double;"> <colgroup> <col style="width: 90px"> <col style="width: 90px"> </colgroup> <tbody> <tr> <td>Move Spd.</td> <td>`+player.mov_speed+`</td> </tr> <tr> <td>Bag Slots </td> <td>`+player.bag_slots+`</td> </tr> <tr> <td>Item Find</td> <td>`+player.item_find+`%</td> </tr> <tr> <td>Gear Score</td> <td>`+player.gear_score+`</td> </tr> <tr> <td>PvP Level </td> <td>`+player.pvp_lvl+`</td> </tr> </tbody> </table> </div>`
+//Here the plain act variables that we add to the panel content
+const base_info_and_stats =`<div style="display:flex;">
+  <table style="undefined;table-layout: fixed; width: 65%; border-style: double;">
+    <colgroup>
+      <col style="width: 101px">
+      <col style="width: 32px">
+      <col style="width: 200px">
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td></td>
+        <td>${player.name}</td>
+      </tr>
+      <tr>
+        <td>Level</td>
+        <td></td>
+        <td>${player.level}</td>
+      </tr>
+      <tr>
+        <td>Class</td>
+        <td><img src="https://hordes.io/assets/ui/classes/2.webp?v=4652922" width="20" height="20"></td>
+        <td>${player.class}</td>
+      </tr>
+      <tr>
+        <td>Faction</td>
+        <td><img src="https://hordes.io/assets/ui/factions/0.webp?v=4652922" width="20" height="20"></td>
+        <td>${player.faction}</td>
+      </tr>
+      <tr>
+        <td>Prestige</td>
+        <td><img src="https://hordes.io/assets/ui/currency/prestige.svg?v=4652922" width="20" height="20"></td>
+        <td>${player.prestige}</td>
+      </tr>
+      <tr>
+        <td>Rating</td>
+        <td><img src="https://hordes.io/assets/ui/elo/2.svg?v=4652922" width="20" height="20"></td>
+        <td>${player.rating}</td>
+      </tr>
+      <tr>
+        <td>Medals</td>
+        <td><img src="https://hordes.io/assets/ui/currency/medal.svg?v=4652922" width="20" height="20"></td>
+        <td>${player.medals}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table style="undefined;table-layout: fixed; width: 35%; border-style: double;">
+    <colgroup>
+      <col style="width: 200px">
+      <col style="width: 35px">
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>Strenght</td>
+        <td>${player.strenght}</td>
+      </tr>
+      <tr>
+        <td>Stamina</td>
+        <td>${player.stamina}</td>
+      </tr>
+      <tr>
+        <td>Dexterity</td>
+        <td>${player.dexterity}</td>
+      </tr>
+      <tr>
+        <td>Intelligence</td>
+        <td>${player.intelligence}</td>
+      </tr>
+      <tr>
+        <td>Wisdom</td>
+        <td>${player.wisdom}</td>
+      </tr>
+      <tr>
+        <td>Luck</td>
+        <td>${player.luck}</td>
+      </tr>
+      <tr>
+        <td>Stat Points</td>
+        <td>${player.stat_points}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>`
+const skill_bar = '<div id="skill_bar_div" style="display:flex;"></div>'
+const base_info_and_stats_2 = `<div style="display:flex;">
+  <table style="undefined;table-layout: fixed; width: 65%; border-style: double;">
+    <colgroup>
+      <col style="width: 148px">
+      <col style="width: 45px">
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>HP</td>
+        <td>${player.hp}</td>
+      </tr>
+      <tr>
+        <td>HP Reg./5s</td>
+        <td>${player.hp_reg}</td>
+      </tr>
+      <tr>
+        <td>MP</td>
+        <td>${player.mp}</td>
+      </tr>
+      <tr>
+        <td>MP Reg./5s</td>
+        <td>${player.mp_reg}</td>
+      </tr>
+      <tr>
+        <td>Defense</td>
+        <td>${player.defense}</td>
+      </tr>
+      <tr>
+        <td>Block</td>
+        <td>${player.block}%</td>
+      </tr>
+    </tbody>
+  </table>
+  <table style="undefined;table-layout: fixed; width: 60%; border-style: double;">
+    <colgroup>
+      <col style="width: 148px">
+      <col style="width: 45px">
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>Min Dmg.</td>
+        <td>${player.min}</td>
+      </tr>
+      <tr>
+        <td>Max Dmg.</td>
+        <td>${player.max}</td>
+      </tr>
+      <tr>
+        <td>Attack Spd.</td>
+        <td>${player.atk_speed}</td>
+      </tr>
+      <tr>
+        <td>Critical</td>
+        <td>${player.critical}%</td>
+      </tr>
+      <tr>
+        <td>Haste</td>
+        <td>${player.haste}%</td>
+      </tr>
+    </tbody>
+  </table>
+  <table style="undefined;table-layout: fixed; width: 60%; border-style: double;">
+    <colgroup>
+      <col style="width: 90px">
+      <col style="width: 90px">
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>Move Spd.</td>
+        <td>${player.mov_speed}</td>
+      </tr>
+      <tr>
+        <td>Bag Slots </td>
+        <td>${player.bag_slots}</td>
+      </tr>
+      <tr>
+        <td>Item Find</td>
+        <td>'${player.item_find}'%</td>
+      </tr>
+      <tr>
+        <td>Gear Score</td>
+        <td>${player.gear_score}</td>
+      </tr>
+      <tr>
+        <td>PvP Level </td>
+        <td>${player.pvp_lvl}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>`
 charPanelContent.innerHTML = base_info_and_stats + skill_bar + base_info_and_stats_2
-
 
 // Draggable, resizable, closable panel
 panel.create(document.body, 250, 500, 600, 450, charPanelHeader, charPanelContent, true, false, true)
 
-const skill_bar_div = document.getElementById('skill_bar_div'); 
+//To review ((I'm sure there is a better way to do it that define the element and then search it))
+const skill_bar_div = document.getElementById('skill_bar_div')
 
 const equipement1 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
 icon.set(equipement1, 'Invigorate', cd, stacks)
@@ -141,7 +313,6 @@ icon.set(equipement10, '', cd, stacks)
 const equipement11 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
 icon.set(equipement11, '', cd, stacks)
 
-
 let count = 0
 // tick every frame
 const test = (time: number): void => {
@@ -157,6 +328,8 @@ const test = (time: number): void => {
       stacks++
     }
     cd--
+    //To review, we only need to reset the stats when we really need to update them, not when they're the same.
+    //Also, may need to define default values on the type to avoid sending info that doesn't change
     icon.set(skill, 'Invigorate', cd, stacks)
     icon.set(skill1, 'Invigorate', cd, stacks)
     icon.set(skill2, 'Invigorate', cd, stacks)
@@ -170,8 +343,6 @@ const test = (time: number): void => {
     icon.set(skill10, 'Invigorate', cd, stacks)
     icon.set(skill11, 'Invigorate', cd, stacks)
     icon.set(skill12, 'Invigorate', cd, stacks)
-
-
 
   }
 

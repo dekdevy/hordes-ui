@@ -68,7 +68,7 @@ export const create = (
 }
 
 export const set = (icon: Icon, name: string, cd: number, stacks: number): void => {
-  if(icon.is_skill && cd > 0){
+  if(icon.is_skill && cd > 0) {
     icon.elements.cd_span.innerHTML = cd.toString()
   }
   if(stacks > 1) {
@@ -77,10 +77,10 @@ export const set = (icon: Icon, name: string, cd: number, stacks: number): void 
   }else{
     icon.elements.stacks_span.innerHTML = stacks.toString()
     icon.elements.stacks_span.style.display = 'none'
-  } 
-  if(icon.empty){
+  }
+  if(icon.empty) {
     icon.elements.inner.style.backgroundImage = 'url(\'https://hordes.io/assets/ui/slotbg/102.webp?v=4652922\')'
-  }  
+  }
 }
 
 function dragIcon(icon: Icon) {

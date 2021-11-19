@@ -106,7 +106,7 @@ export const create = (
     // Stuff for CSS
     resetSizeButton.innerHTML = 'Reset size'
     resetSizeButton.style.position = 'absolute'
-    if(draggable){
+    if(draggable) {
       resetSizeButton.style.top = '21'
     }else{
       resetSizeButton.style.top = '0'
