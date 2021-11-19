@@ -5,7 +5,10 @@ export const create = (
   x: number,
   y: number,
   width: number,
-  height: number): Icon => {
+  height: number,
+  is_item: boolean,
+  is_skill: boolean,
+  empty: boolean): Icon => {
 
   // create elements
   const outer = element(parent, 'div')
@@ -48,6 +51,9 @@ export const create = (
     cd      : 0,
     x       : x,
     y       : y,
+    is_item : is_item,
+    is_skill: is_skill,
+    empty   : empty,
     elements: {
       outer,
       inner,
@@ -62,19 +68,23 @@ export const create = (
 }
 
 export const set = (icon: Icon, name: string, cd: number, stacks: number): void => {
-
-  icon.elements.cd_span.innerHTML = cd.toString()
+  if(icon.is_skill && cd > 0){
+    icon.elements.cd_span.innerHTML = cd.toString()
+  }
   if(stacks > 1) {
     icon.elements.stacks_span.innerHTML = stacks.toString()
     icon.elements.stacks_span.style.display = ''
   }else{
     icon.elements.stacks_span.innerHTML = stacks.toString()
     icon.elements.stacks_span.style.display = 'none'
-  }
+  } 
+  if(icon.empty){
+    icon.elements.inner.style.backgroundImage = 'url(\'https://hordes.io/assets/ui/slotbg/102.webp?v=4652922\')'
+  }  
 }
 
 function dragIcon(icon: Icon) {
-  console.log('mouse down')
+
   return function (downEvent: MouseEvent) {
     const element = (this as HTMLElement)
 
@@ -83,7 +93,7 @@ function dragIcon(icon: Icon) {
       element.style.cursor = 'grabbing'
       const mouseMove = (moveEvent: MouseEvent) => {
         // Make sure mouse is still pressed
-        if (moveEvent.buttons & 1) {
+        if (moveEvent.buttons & 1 && !icon.empty) {
           icon.x += moveEvent.movementX
           icon.y += moveEvent.movementY
           element.style.left = icon.x.toString()

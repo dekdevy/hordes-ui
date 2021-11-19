@@ -10,40 +10,40 @@ const maxMp = 600
 let stacks = 0
 let cd = 60
 
-const skill = icon.create(document.body, 42, 42, 42, 42)
+const skill = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill, 'Invigorate', cd, stacks)
 //STRESS TEST ICONS
-const skill1 = icon.create(document.body, 42, 42, 42, 42)
+const skill1 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill1, 'Invigorate', cd, stacks)
-const skill2 = icon.create(document.body, 42, 42, 42, 42)
+const skill2 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill2, 'Invigorate', cd, stacks)
-const skill3 = icon.create(document.body, 42, 42, 42, 42)
+const skill3 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill3, 'Invigorate', cd, stacks)
-const skill4 = icon.create(document.body, 42, 42, 42, 42)
+const skill4 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill4, 'Invigorate', cd, stacks)
-const skill5 = icon.create(document.body, 42, 42, 42, 42)
+const skill5 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill5, 'Invigorate', cd, stacks)
-const skill6 = icon.create(document.body, 42, 42, 42, 42)
+const skill6 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill6, 'Invigorate', cd, stacks)
-const skill7 = icon.create(document.body, 42, 42, 42, 42)
+const skill7 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill7, 'Invigorate', cd, stacks)
-const skill8 = icon.create(document.body, 42, 42, 42, 42)
+const skill8 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill8, 'Invigorate', cd, stacks)
-const skill9 = icon.create(document.body, 42, 42, 42, 42)
+const skill9 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill9, 'Invigorate', cd, stacks)
-const skill10 = icon.create(document.body, 42, 42, 42, 42)
+const skill10 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill10, 'Invigorate', cd, stacks)
-const skill11 = icon.create(document.body, 42, 42, 42, 42)
+const skill11 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill11, 'Invigorate', cd, stacks)
-const skill12 = icon.create(document.body, 42, 42, 42, 42)
+const skill12 = icon.create(document.body, 42, 42, 42, 42, false, true, false)
 icon.set(skill12, 'Invigorate', cd, stacks)
 
-const health = bar.create(document.body, 50, 300, 300, 30)
-const mana = bar.create(document.body, 50, 300, 300, 30)
+const health = bar.create(document.body, 50, 500, 300, 30)
+const mana = bar.create(document.body, 50, 500, 300, 30)
 
 // setup some header and content elements for the panel
 const panelHeader = document.createElement('div')
-panelHeader.innerHTML = '<h4>Peter\'s Character</h4>'
+panelHeader.innerHTML = '<h4>Character</h4>'
 panelHeader.style.width = '100%'
 panelHeader.style.border = '1px outset black'
 const panelContent = document.createElement('div')
@@ -54,13 +54,93 @@ panel.create(document.body, 250, 50, 300, 300, panelHeader, panelContent, true, 
 
 // Draggable panel
 const dragHeader = document.createElement('div')
-dragHeader.innerText = 'DRAG ME, carefully!'
+dragHeader.innerText = '\n\nDRAG ME, carefully!'
 panel.create(document.body, 600, 50, 300, 300, dragHeader, document.createElement('div'), true, false, true)
 
 // Resizable panel
 const resizeHeader = document.createElement('div')
-resizeHeader.innerText = 'RESIZE ME, but very very carefully!'
+resizeHeader.innerText = '\n\nRESIZE ME, but very very carefully!'
 panel.create(document.body, 950, 50, 300, 200, resizeHeader, document.createElement('div'), false, true, true)
+
+//Player object it's meant to fill this data:
+const player = {
+    name: "Blochflame",
+    level: 45,
+    class: "Archer",
+    faction: "Vanguard",
+    prestige: 8898,
+    rating: 1800,
+    medals: 999,
+    strenght: 10,
+    stamina: 999,
+    dexterity: 999,
+    intelligence: 10,
+    wisdom: 10,
+    luck: 10,
+    stat_points: 0,
+    hp: 1555,
+    hp_reg: 555,
+    mp: 555,
+    mp_reg: 555,
+    defense: 555,
+    block: 555,
+    min: 555,
+    max: 555,
+    atk_speed: 555,
+    critical: 555,
+    haste: 555,
+    mov_speed: 555,
+    bag_slots: 555,
+    item_find: 555,
+    gear_score: 555,
+    pvp_lvl: 555
+
+};
+
+// setup some header and content elements for the panel
+const charPanelHeader = document.createElement('div')
+charPanelHeader.innerHTML = '<h4>'+player.name+'\'s Character</h4>'
+charPanelHeader.style.width = '100%'
+charPanelHeader.style.border = '1px outset black'
+const charPanelContent = document.createElement('div')
+charPanelContent.style.width = '60%'
+charPanelContent.style.paddingLeft = '5%'
+charPanelContent.style.paddingTop = '2%'
+charPanelContent.style.display = 'contents'
+const base_info_and_stats = `<div style="display:flex;"><table style="undefined;table-layout: fixed; width: 65%; border-style: double;"> <colgroup> <col style="width: 101px"> <col style="width: 32px"> <col style="width: 200px"> </colgroup> <tbody> <tr> <td>Name</td> <td></td> <td>`+player.name+`</td> </tr> <tr> <td>Level</td> <td></td> <td>`+player.level+`</td> </tr> <tr> <td>Class</td> <td><img src="https://hordes.io/assets/ui/classes/2.webp?v=4652922" width="20" height="20"></td> <td>`+player.class+`</td> </tr> <tr> <td>Faction</td> <td><img src="https://hordes.io/assets/ui/factions/0.webp?v=4652922" width="20" height="20"></td> <td>`+player.faction+`</td> </tr> <tr> <td>Prestige</td> <td><img src="https://hordes.io/assets/ui/currency/prestige.svg?v=4652922" width="20" height="20"></td> <td>`+player.prestige+`</td> </tr> <tr> <td>Rating</td> <td><img src="https://hordes.io/assets/ui/elo/2.svg?v=4652922" width="20" height="20"></td> <td>`+player.rating+`</td> </tr> <tr> <td>Medals</td> <td><img src="https://hordes.io/assets/ui/currency/medal.svg?v=4652922" width="20" height="20"></td> <td>`+player.medals+`</td> </tr> </tbody> </table><table style="undefined;table-layout: fixed; width: 35%; border-style: double;"> <colgroup> <col style="width: 200px"> <col style="width: 35px"> </colgroup> <tbody> <tr> <td>Strenght</td> <td>`+player.strenght+`</td> </tr> <tr> <td>Stamina</td> <td>`+player.stamina+`</td> </tr> <tr> <td>Dexterity</td> <td>`+player.dexterity+`</td> </tr> <tr> <td>Intelligence</td> <td>`+player.intelligence+`</td> </tr> <tr> <td>Wisdom</td> <td>`+player.wisdom+`</td> </tr> <tr> <td>Luck</td> <td>`+player.luck+`</td> </tr> <tr> <td>Stat Points</td> <td>`+player.stat_points+`</td> </tr> </tbody> </table></div>`
+const skill_bar = `<div id="skill_bar_div" style="display:flex;"></div>`
+const base_info_and_stats_2 = `<div style="display:flex;"> <table style="undefined;table-layout: fixed; width: 65%; border-style: double;"> <colgroup> <col style="width: 148px"> <col style="width: 45px"> </colgroup> <tbody> <tr> <td>HP</td> <td>`+player.hp+`</td> </tr> <tr> <td>HP Reg./5s</td> <td>`+player.hp_reg+`</td> </tr> <tr> <td>MP</td> <td>`+player.mp+`</td> </tr> <tr> <td>MP Reg./5s</td> <td>`+player.mp_reg+`</td> </tr> <tr> <td>Defense</td> <td>`+player.defense+`</td> </tr> <tr> <td>Block</td> <td>`+player.block+`%</td> </tr> </tbody> </table> <table style="undefined;table-layout: fixed; width: 60%; border-style: double;"> <colgroup> <col style="width: 148px"> <col style="width: 45px"> </colgroup> <tbody> <tr> <td>Min Dmg.</td> <td>`+player.min+`</td> </tr> <tr> <td>Max Dmg.</td> <td>`+player.max+`</td> </tr> <tr> <td>Attack Spd.</td> <td>`+player.atk_speed+`</td> </tr> <tr> <td>Critical</td> <td>`+player.critical+`%</td> </tr> <tr> <td>Haste</td> <td>`+player.haste+`%</td> </tr> </tbody> </table> <table style="undefined;table-layout: fixed; width: 60%; border-style: double;"> <colgroup> <col style="width: 90px"> <col style="width: 90px"> </colgroup> <tbody> <tr> <td>Move Spd.</td> <td>`+player.mov_speed+`</td> </tr> <tr> <td>Bag Slots </td> <td>`+player.bag_slots+`</td> </tr> <tr> <td>Item Find</td> <td>`+player.item_find+`%</td> </tr> <tr> <td>Gear Score</td> <td>`+player.gear_score+`</td> </tr> <tr> <td>PvP Level </td> <td>`+player.pvp_lvl+`</td> </tr> </tbody> </table> </div>`
+charPanelContent.innerHTML = base_info_and_stats + skill_bar + base_info_and_stats_2
+
+
+// Draggable, resizable, closable panel
+panel.create(document.body, 250, 500, 600, 450, charPanelHeader, charPanelContent, true, false, true)
+
+const skill_bar_div = document.getElementById('skill_bar_div'); 
+
+const equipement1 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
+icon.set(equipement1, 'Invigorate', cd, stacks)
+const equipement2 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
+icon.set(equipement2, 'Invigorate', cd, stacks)
+const equipement3 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
+icon.set(equipement3, 'Invigorate', cd, stacks)
+const equipement4 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
+icon.set(equipement4, 'Invigorate', cd, stacks)
+const equipement5 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
+icon.set(equipement5, 'Invigorate', cd, stacks)
+const equipement6 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, false)
+icon.set(equipement6, 'Invigorate', cd, stacks)
+const equipement7 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
+icon.set(equipement7, 'Invigorate', cd, stacks)
+const equipement8 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
+icon.set(equipement8, 'Invigorate', cd, stacks)
+const equipement9 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, false)
+icon.set(equipement9, 'Invigorate', cd, stacks)
+const equipement10 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
+icon.set(equipement10, '', cd, stacks)
+const equipement11 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
+icon.set(equipement11, '', cd, stacks)
+
 
 let count = 0
 // tick every frame
@@ -90,6 +170,9 @@ const test = (time: number): void => {
     icon.set(skill10, 'Invigorate', cd, stacks)
     icon.set(skill11, 'Invigorate', cd, stacks)
     icon.set(skill12, 'Invigorate', cd, stacks)
+
+
+
   }
 
   // update bar's
