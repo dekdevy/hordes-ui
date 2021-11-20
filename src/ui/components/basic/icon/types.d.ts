@@ -4,7 +4,10 @@ interface Icon {
   stacks: number,
   cd: number,
   x: number,
-  y: number
+  y: number,
+  is_item: boolean,
+  is_skill: boolean,
+  empty: boolean,
 
   elements: {
     outer: HTMLElement,

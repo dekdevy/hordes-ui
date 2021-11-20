@@ -91,8 +91,8 @@ export const create = (
     // Stuff for CSS
     resetPositionButton.innerHTML = 'Reset position'
     resetPositionButton.style.position = 'absolute'
-    resetPositionButton.style.top = '20'
-    resetPositionButton.style.right = '20'
+    resetPositionButton.style.top = '0'
+    resetPositionButton.style.right = '21'
     resetPositionButton.style.width = '110'
     resetPositionButton.style.height = '20'
     resetPositionButton.style.height = '20'
@@ -106,8 +106,12 @@ export const create = (
     // Stuff for CSS
     resetSizeButton.innerHTML = 'Reset size'
     resetSizeButton.style.position = 'absolute'
-    resetSizeButton.style.top = '40'
-    resetSizeButton.style.right = '40'
+    if(draggable) {
+      resetSizeButton.style.top = '21'
+    }else{
+      resetSizeButton.style.top = '0'
+    }
+    resetSizeButton.style.right = '21'
     resetSizeButton.style.width = '90'
     resetSizeButton.style.height = '20'
     resetSizeButton.style.height = '20'
