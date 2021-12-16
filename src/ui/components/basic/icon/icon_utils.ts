@@ -98,7 +98,7 @@ export function createIcon(
   return icon
 }
 
-export function cooldown(icon: Icon, time: number): void {
+export function iconCooldown(icon: Icon, time: number): void {
   icon.state.cooldown = time
   icon.state.progress = 0
   icon.state.progressAngle = -Math.PI / 2

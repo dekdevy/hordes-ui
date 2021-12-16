@@ -1,6 +1,8 @@
-import {createIcon} from 'ui/components/basic/icon/icon_utils.js'
+import {createIcon, iconCooldown} from 'ui/components/basic/icon/icon_utils.js'
 
 export const create = createIcon
+
+export const cooldown = iconCooldown
 
 export const update = (icon: Icon, delta: number): boolean => {
   const cooldownTime = icon.state.cooldown

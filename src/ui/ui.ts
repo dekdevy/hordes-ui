@@ -32,7 +32,6 @@ skillPanel.elements.inner.style.textAlign = 'center'
 const iconList: Icon[] = []
 for (const key of Array(10).keys()) {
   const skillImage = document.createElement('img')
-  // Skill image to make it look super pretty
   skillImage.setAttribute('src', `https://hordes.io/assets/ui/skills/${key}.webp?v=4652922`)
   const skillIcon = icon.create(skillPanel.elements.inner, 40, 40, skillImage, true)
   icon.cooldown(skillIcon, 20000)
