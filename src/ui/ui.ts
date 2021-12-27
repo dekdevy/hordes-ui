@@ -315,12 +315,12 @@ const equipement11 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
 icon.set(equipement11, '', cd, stacks)
 
 const skillPanelHeader = document.createElement('div')
-skillPanelHeader.innerHTML = `<h3>Skills</h3>`
-skillPanelHeader.innerHTML += `<h4>Skill Points</h4>`
+skillPanelHeader.innerHTML = '<h3>Skills</h3>'
+skillPanelHeader.innerHTML += '<h4>Skill Points</h4>'
 skillPanelHeader.style.width = '100%'
 skillPanelHeader.style.border = '1px outset black'
 const skillPanelContent = document.createElement('div')
-skillPanelContent.innerHTML = '';
+skillPanelContent.innerHTML = ''
 
 const resetSkillsButton = element(skillPanelHeader, 'div')
 // Stuff for CSS
@@ -367,12 +367,36 @@ skillPanelContent.innerHTML = `<table style="width: 605px;">
   <tr>
     <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
         <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
    <tr>
        <tr>
     <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
@@ -385,12 +409,36 @@ skillPanelContent.innerHTML = `<table style="width: 605px;">
   <tr>
     <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
         <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
    <tr>
        <tr>
     <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
@@ -403,12 +451,36 @@ skillPanelContent.innerHTML = `<table style="width: 605px;">
   <tr>
     <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
         <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
    <tr>
        <tr>
     <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
@@ -421,12 +493,36 @@ skillPanelContent.innerHTML = `<table style="width: 605px;">
   <tr>
     <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
         <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
    <tr>
        <tr>
     <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
@@ -439,12 +535,36 @@ skillPanelContent.innerHTML = `<table style="width: 605px;">
   <tr>
     <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
         <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
    <tr>
        <tr>
     <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
@@ -457,12 +577,36 @@ skillPanelContent.innerHTML = `<table style="width: 605px;">
   <tr>
     <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
         <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
    <tr>
        <tr>
     <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
@@ -475,12 +619,36 @@ skillPanelContent.innerHTML = `<table style="width: 605px;">
   <tr>
     <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
         <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
    <tr>
        <tr>
     <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
@@ -493,12 +661,36 @@ skillPanelContent.innerHTML = `<table style="width: 605px;">
   <tr>
     <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
         <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
    <tr>
        <tr>
     <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
@@ -511,12 +703,36 @@ skillPanelContent.innerHTML = `<table style="width: 605px;">
   <tr>
     <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
         <td style="
     display: flex;
-"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">x</div></td>
-    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">-</div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
    <tr>
 
 
