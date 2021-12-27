@@ -1,6 +1,7 @@
 import * as bar from 'ui/components/basic/bar/bar.js'
 import * as icon from 'ui/components/basic/icon/icon.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
+import {element} from 'ui/utils.js'
 
 // just a little more testing
 const maxHp = 1900
@@ -269,7 +270,7 @@ const base_info_and_stats_2 = `<div style="display:flex;">
       </tr>
       <tr>
         <td>Item Find</td>
-        <td>'${player.item_find}'%</td>
+        <td>${player.item_find}%</td>
       </tr>
       <tr>
         <td>Gear Score</td>
@@ -312,6 +313,433 @@ const equipement10 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
 icon.set(equipement10, '', cd, stacks)
 const equipement11 = icon.create(skill_bar_div, 0, 0, 42, 42, true, false, true)
 icon.set(equipement11, '', cd, stacks)
+
+const skillPanelHeader = document.createElement('div')
+skillPanelHeader.innerHTML = '<h3>Skills</h3>'
+skillPanelHeader.innerHTML += '<h4>Skill Points</h4>'
+skillPanelHeader.style.width = '100%'
+skillPanelHeader.style.border = '1px outset black'
+const skillPanelContent = document.createElement('div')
+skillPanelContent.innerHTML = ''
+
+const resetSkillsButton = element(skillPanelHeader, 'div')
+// Stuff for CSS
+resetSkillsButton.innerHTML = 'Reset'
+resetSkillsButton.style.position = 'absolute'
+resetSkillsButton.style.top = '80'
+resetSkillsButton.style.right = '60'
+resetSkillsButton.style.width = '60'
+resetSkillsButton.style.height = '20'
+resetSkillsButton.style.height = '20'
+resetSkillsButton.style.textAlign = 'center'
+resetSkillsButton.style.cursor = 'pointer'
+resetSkillsButton.style.border = '1px inset black'
+resetSkillsButton.addEventListener('click', function () {
+  (this as HTMLElement).parentElement.hidden = true
+})
+
+const applySkillsButton = element(skillPanelHeader, 'div')
+// Stuff for CSS
+applySkillsButton.innerHTML = 'Apply'
+applySkillsButton.style.position = 'absolute'
+applySkillsButton.style.top = '80'
+applySkillsButton.style.right = '0'
+applySkillsButton.style.width = '60'
+applySkillsButton.style.height = '20'
+applySkillsButton.style.height = '20'
+applySkillsButton.style.textAlign = 'center'
+applySkillsButton.style.cursor = 'pointer'
+applySkillsButton.style.border = '1px inset black'
+applySkillsButton.addEventListener('click', function () {
+  (this as HTMLElement).parentElement.hidden = true
+})
+
+skillPanelContent.innerHTML = `<table style="width: 605px;">
+<thead>
+  <tr>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+  </tr>
+  <tr>
+    <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+        <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+   <tr>
+       <tr>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+  </tr>
+  <tr>
+    <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+        <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+   <tr>
+       <tr>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+  </tr>
+  <tr>
+    <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+        <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+   <tr>
+       <tr>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+  </tr>
+  <tr>
+    <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+        <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+   <tr>
+       <tr>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+  </tr>
+  <tr>
+    <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+        <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+   <tr>
+       <tr>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+  </tr>
+  <tr>
+    <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+        <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+   <tr>
+       <tr>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+  </tr>
+  <tr>
+    <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+        <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+   <tr>
+       <tr>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+  </tr>
+  <tr>
+    <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+        <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+   <tr>
+       <tr>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+    <td rowspan="2"><img src="https://static.miraheze.org/hordesiowiki/d/d3/Invigorate.png" alt="Image" width="42" height="42"></td>
+    <td>Skill name</td>
+    <td>Skill Level</td>
+  </tr>
+  <tr>
+    <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+        <td style="
+    display: flex;
+"><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div><div style="width: 20px; height: 20px; text-align: center; cursor: pointer; border: 1px inset black;">
+x
+</div></td>
+    <td><div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">
+    -
+    </div> <div style="width: 20px;height: 20px;text-align: center;cursor: pointer;border: 1px inset black;float: left;">+</div></td>
+   <tr>
+
+
+</thead>
+</table>`
+// Draggable, resizable, closable panel
+panel.create(document.body, 900, 500, 600, 600, skillPanelHeader, skillPanelContent, true, false, true)
 
 let count = 0
 // tick every frame
