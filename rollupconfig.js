@@ -13,7 +13,8 @@ const plugins = [alias({entries: aliasPaths})]
 
 // collect all input and output files
 const files = [
-  {in: 'dist/ts/ui/ui.js', out: 'dist/js/ui/ui.js'},
+  {in: 'dist/ts/tests/mock.js', out: 'dist/js/tests/mock.js'},
+  {in: 'dist/ts/tests/list.js', out: 'dist/js/tests/list.js'},
   {in: 'dist/ts/server/server.js', out: 'dist/js/server/server.js'}
 ]
 

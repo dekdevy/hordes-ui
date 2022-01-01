@@ -1,4 +1,4 @@
-import {element} from 'ui/utils.js'
+import { element } from 'ui/utils/html.js'
 
 export const create = (
   parent: HTMLElement,
