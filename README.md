@@ -23,16 +23,16 @@ These components represent the basic building blocks of the UI. They are used by
 
 |Component|State|Description
 |---|---|---|
-|Bar|Done|A vertical bar, able to change width based on a fraction, change color, display a left, right, and center text.|
-|Icon|Done|A basic square which can be used to display items, buffs and skills. Displays an image, a cooldown overlay, a big centered number, and numbers in the coners. Can drag / receive drop.|
-|Panel|Done|A panel for free floating UI elements, can display a header, a close button, optionally have a draggable resize corner, be movable and store/restore its position.|
+|Bar|Started|A vertical bar, able to change width based on a fraction, change color, display a left, right, and center text.|
+|Icon|Started|A basic square which can be used to display items, buffs and skills. Displays an image, a cooldown overlay, a big centered number, and numbers in the coners. Can drag / receive drop.|
+|Panel|Started|A panel for free floating UI elements, can display a header, a close button, optionally have a draggable resize corner, be movable and store/restore its position.|
 
 ### Advanced components
 These components implement unique elements as well as basic components to generate the actual UI.
 
 |Component|State|Description
 |---|---|---|
-|Char Panel|Done|Stats and currently equipped items.|
+|Char Panel|Started|Stats and currently equipped items.|
 |Skill Panel|Started|List of known skills using icons, draggable into the Skill Bar.|
 |PVP Panel|-|Shows players pvp progress / kills / fame last week, as well as arena rating and ranking.|
 |Inventory|-|All items owned by the player, current gold / elixir points, and a filter for items by name.|
