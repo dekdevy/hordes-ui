@@ -2,54 +2,35 @@ import { element } from 'ui/utils/html.js'
 
 export const create = (
   parent: HTMLElement,
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-  header: HTMLElement,
-  inner: HTMLElement,
-  draggable?: boolean,
-  resizable?: boolean,
-  closable?: boolean): Panel => {
+  draggable: boolean,
+  resizable: boolean,
+  closable: boolean): Panel => {
 
   // create elements
   const outer = element(parent, 'div')
+  const header = element(outer, 'div')
+  const inner = element(outer, 'div')
 
   // Inline styles, should go to CSS
   outer.style.position = 'absolute'
   outer.style.border = '2px inset black'
   outer.style.userSelect = 'none'
+  outer.style.display = 'grid'
+  outer.style.gridTemplateRows = 'auto 1fr'
   outer.draggable = false
 
-  // Keep on screen
-  x = Math.max(0, Math.min(screen.width, x))
-  y = Math.max(0, Math.min(screen.height, y))
-
   const panel: Panel = {
-    defaultX     : x,
-    defaultY     : y,
-    defaultWidth : width,
-    defaultHeight: height,
-    state        : {
-      x     : x,
-      y     : y,
-      width : width,
-      height: height
-    },
+    title   : '',
+    x       : 0,
+    y       : 0,
+    width   : 0,
+    height  : 0,
     elements: {
       outer,
       inner,
       header
     }
   }
-
-  panel.elements.outer.style.left = x.toString()
-  panel.elements.outer.style.top = y.toString()
-  panel.elements.outer.style.width = width.toString()
-  panel.elements.outer.style.height = height.toString()
-
-  outer.append(header)
-  outer.append(inner)
 
   if (draggable) outer.addEventListener('mousedown', dragPanel(panel))
 
@@ -86,42 +67,11 @@ export const create = (
     })
   }
 
-  if (draggable) {
-    const resetPositionButton = element(outer, 'div')
-    // Stuff for CSS
-    resetPositionButton.innerHTML = 'Reset position'
-    resetPositionButton.style.position = 'absolute'
-    resetPositionButton.style.top = '0'
-    resetPositionButton.style.right = '21'
-    resetPositionButton.style.width = '110'
-    resetPositionButton.style.height = '20'
-    resetPositionButton.style.height = '20'
-    resetPositionButton.style.textAlign = 'center'
-    resetPositionButton.style.cursor = 'pointer'
-    resetPositionButton.style.border = '1px inset black'
-    resetPositionButton.addEventListener('mousedown', resetPosition(panel))
-  }
-  if (resizable) {
-    const resetSizeButton = element(outer, 'div')
-    // Stuff for CSS
-    resetSizeButton.innerHTML = 'Reset size'
-    resetSizeButton.style.position = 'absolute'
-    if(draggable) {
-      resetSizeButton.style.top = '21'
-    }else{
-      resetSizeButton.style.top = '0'
-    }
-    resetSizeButton.style.right = '21'
-    resetSizeButton.style.width = '90'
-    resetSizeButton.style.height = '20'
-    resetSizeButton.style.height = '20'
-    resetSizeButton.style.textAlign = 'center'
-    resetSizeButton.style.cursor = 'pointer'
-    resetSizeButton.style.border = '1px inset black'
-    resetSizeButton.addEventListener('mousedown', resetSize(panel))
-  }
-
   return panel
+}
+
+export const destroy = (panel: Panel) => {
+  panel.elements.outer.remove()
 }
 
 // if mouse down, move the panel
@@ -137,10 +87,10 @@ function dragPanel(panel: Panel) {
       const mouseMove = (moveEvent: MouseEvent) => {
         // Make sure mouse is still pressed
         if (moveEvent.buttons & 1) {
-          panel.state.x += moveEvent.movementX
-          panel.state.y += moveEvent.movementY
-          element.style.left = panel.state.x.toString()
-          element.style.top = panel.state.y.toString()
+          panel.x += moveEvent.movementX
+          panel.y += moveEvent.movementY
+          element.style.left = panel.x.toString()
+          element.style.top = panel.y.toString()
         }
       }
       document.addEventListener('mousemove', mouseMove)
@@ -166,10 +116,10 @@ function resizePanel(panel: Panel) {
       element.style.cursor = 'grabbing'
 
       const mouseMove = (moveEvent: MouseEvent) => {
-        panel.state.width += moveEvent.movementX
-        element.style.width = panel.state.width.toString()
-        panel.state.height += moveEvent.movementY
-        element.style.height = panel.state.height.toString()
+        panel.width += moveEvent.movementX
+        element.style.width = panel.width.toString()
+        panel.height += moveEvent.movementY
+        element.style.height = panel.height.toString()
       }
       document.addEventListener('mousemove', mouseMove)
 
@@ -185,41 +135,36 @@ function resizePanel(panel: Panel) {
   }
 }
 
-function resetPosition(panel: Panel) {
-
-  return function (downEvent: MouseEvent) {
-    if (downEvent.buttons & 1) {
-      const element = (downEvent.target as HTMLElement).parentElement
-
-      console.log('ResetPosition!' + 'Default X: ' + panel.defaultX + ' Default Y: '+panel.defaultY)
-
-      element.style.left = panel.defaultX.toString()
-      element.style.top = panel.defaultY.toString()
-
-      panel.state.x = panel.defaultX
-      panel.state.y = panel.defaultY
-
-      downEvent.stopImmediatePropagation()
-    }
+export const setPos = (panel: Panel, x: number, y: number) : void => {
+  if(panel.x !== x) {
+    panel.x = x
+    panel.elements.outer.style.left = `${x}px`
+  }
+  if(panel.y !== y) {
+    panel.y = y
+    panel.elements.outer.style.top = `${y}px`
   }
 }
 
-function resetSize(panel: Panel) {
-
-  return function (downEvent: MouseEvent) {
-    if (downEvent.buttons & 1) {
-      const element = (downEvent.target as HTMLElement).parentElement
-
-      console.log('ResetSize!' + 'Default width: ' + panel.defaultWidth + ' Default height: '+panel.defaultHeight)
-
-      panel.state.width = panel.defaultWidth
-      panel.state.height = panel.defaultHeight
-
-      element.style.width = panel.state.width.toString()
-      element.style.height = panel.state.height.toString()
-
-      downEvent.stopImmediatePropagation()
-    }
+export const setSize = (panel: Panel, width: number, height: number) : void => {
+  if(panel.width !== width) {
+    panel.width = width
+    panel.elements.outer.style.width = `${width}px`
+  }
+  if(panel.height !== height) {
+    panel.height = height
+    panel.elements.outer.style.height = `${height}px`
   }
 }
 
+export const set = (panel: Panel, x: number, y: number, width: number, height: number) : void => {
+  setSize(panel, width, height)
+  setPos(panel, x, y)
+}
+
+export const setTitle = (panel: Panel, title: string) : void => {
+  if(panel.title !== title) {
+    panel.title = title
+    panel.elements.header.innerText = title
+  }
+}

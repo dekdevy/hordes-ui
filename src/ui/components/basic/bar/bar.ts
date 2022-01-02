@@ -1,11 +1,6 @@
 import { element } from 'ui/utils/html.js'
 
-export const create = (
-  parent: HTMLElement,
-  x: number,
-  y: number,
-  width: number,
-  height: number): Bar => {
+export const create = (parent: HTMLElement): Bar => {
 
   // create elements
   const outer = element(parent, 'div')
@@ -15,18 +10,14 @@ export const create = (
 
   // for testing these are some basic hardcoded styles, we will replace it with css
   outer.style.backgroundColor = '#333'
-  outer.style.width = width.toString()
   outer.style.position = 'relative'
-  outer.style.left = x.toString()
-  outer.style.top = y.toString()
   inner.style.backgroundColor = '#3F3'
-  inner.style.height = height.toString()
+  inner.style.height = '100%'
   textLeft.style.position = 'absolute'
   textLeft.style.top = '0'
   textRight.style.position = 'absolute'
   textRight.style.top = '0'
   textRight.style.right = '0'
-  outer.style.marginBottom = '20px'
 
   return {
     fraction : 1,
@@ -42,6 +33,10 @@ export const create = (
   }
 }
 
+export const destroy = (bar: Bar) : void => {
+  bar.elements.outer.remove()
+}
+
 export const set = (bar: Bar, fraction: number, textLeft: string, textRight: string): void => {
 
   // sanitize values
@@ -54,10 +49,11 @@ export const set = (bar: Bar, fraction: number, textLeft: string, textRight: str
   }
   if (bar.textLeft !== textLeft) {
     bar.textLeft = textLeft
-    bar.elements.textLeft.innerHTML = textLeft
+    bar.elements.textLeft.innerText = textLeft
   }
   if (bar.textRight !== textRight) {
     bar.textRight = textRight
-    bar.elements.textRight.innerHTML = textRight
+    bar.elements.textRight.innerText = textRight
   }
 }
+

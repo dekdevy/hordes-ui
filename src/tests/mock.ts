@@ -2,47 +2,53 @@ import * as bar from 'ui/components/basic/bar/bar.js'
 import * as icon from 'ui/components/basic/icon/icon.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
 
-// just a little more testing
-const maxHp = 1900
-const maxMp = 600
-
-const health = bar.create(document.body, 50, 500, 300, 30)
-const mana = bar.create(document.body, 50, 500, 300, 30)
-
-// setup some header and content elements for the panel
-const panelHeader = document.createElement('div')
-panelHeader.innerHTML = '<h4>Character</h4>'
-panelHeader.style.width = '100%'
-panelHeader.style.border = '1px outset black'
-const panelContent = document.createElement('div')
-panelContent.innerHTML = `<table><tr>HP</tr><tr>MP</tr><td>${maxHp}</td><td>${maxMp}</td>`
-
-// Draggable, resizable, closable panel
-panel.create(document.body, 250, 50, 300, 300, panelHeader, panelContent, true, true, true)
+// Mock.ts creates a mockup game user interface and fills it dynamically
+// This emulates a rough game client experience without actually needing to run the game
 
 // Draggable panel
-const dragHeader = document.createElement('div')
-dragHeader.innerText = 'DRAG ME, carefully!'
-panel.create(document.body, 600, 50, 300, 300, dragHeader, document.createElement('div'), true, false, true)
+const panel2 = panel.create(document.body, true, false, false)
+panel.set(panel2, 400, 100, 200, 200)
+panel.setTitle(panel2, 'Draggable')
 
 // Resizable panel
-const resizeHeader = document.createElement('div')
-resizeHeader.innerText = 'RESIZE ME, but very very carefully!'
-panel.create(document.body, 950, 50, 300, 200, resizeHeader, document.createElement('div'), false, true, true)
+const panel3 = panel.create(document.body,  false, true, false)
+panel.set(panel3, 700, 100, 200, 200)
+panel.setTitle(panel3, 'Resizeable')
+
+// closable panel
+const panel4 = panel.create(document.body,  false, false, true)
+panel.set(panel4, 100, 100, 200, 200)
+panel.setTitle(panel4, 'Closable')
+
+// Draggable, resizable, closable panel
+const panel1 = panel.create(document.body, true, true, true)
+panel.set(panel1, 100, 400, 200, 200)
+panel.setTitle(panel1, 'Drag, Resize, Close')
+
+// bar panel
+const barPanel = panel.create(document.body,  false, false, false)
+panel.set(barPanel, 500, 400, 200, 80)
+panel.setTitle(barPanel, 'Bars')
+
+// mock bars & panel
+const maxHp = 1900
+const maxMp = 600
+const health = bar.create(barPanel.elements.inner)
+const mana = bar.create(barPanel.elements.inner)
+barPanel.elements.inner.style.display = 'grid'
+barPanel.elements.inner.style.gridTemplateRows = '1fr 1fr'
+barPanel.elements.inner.style.gridTemplateColumns = '1fr'
 
 // tick every frame
 const test = (time: number): void => {
 
   // calculate some moving hp/mp numbers
   const hp = Math.round(maxHp * (Math.sin(time / 1000) * 0.5 + 0.5))
-  const mp = Math.round(maxMp * (Math.sin(time / 1000) * 0.5 + 0.5))
+  const mp = Math.round(maxMp * (Math.sin(time / 1000 + 0.5) * 0.5 + 0.5))
 
   // update bars
   bar.set(health, hp / maxHp, 'Peter\'s HP', `${hp}/${maxHp}`)
   bar.set(mana, mp / maxMp, 'Peter\'s MP', `${mp}/${maxMp}`)
-
-  // simulate an updating content element
-  panelContent.innerHTML = `<table><tr>HP</tr><tr>MP</tr><td>${hp}/${maxHp}</td><td>${mp}/${maxMp}</td>`
 
   requestAnimationFrame(test)
 
