@@ -70,7 +70,7 @@ export const create = (
   return panel
 }
 
-export const destroy = (panel: Panel) => {
+export const destroy = (panel: Panel) : void => {
   panel.elements.outer.remove()
 }
 

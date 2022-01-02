@@ -1,5 +1,5 @@
 import * as bar from 'ui/components/basic/bar/bar.js'
-import * as icon from 'ui/components/basic/icon/icon.js'
+// import * as icon from 'ui/components/basic/icon/icon.js'
 import * as panel from 'ui/components/basic/panel/panel.js'
 
 // Mock.ts creates a mockup game user interface and fills it dynamically
