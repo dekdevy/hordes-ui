@@ -1,7 +1,7 @@
 # Hordes.io User Interface
 The goal of this repo is to create an open source replacement for the official Hordes.io UI on top of the game client. 
 This will likely take a while to get established and used as a learning project for some folks from the community.
-For now, you can join the small [discord server](https://discord.gg/jpYjGv7CTb) for this project which includes a guide on how to get started.
+For now, you can join the [discord server](https://discord.gg/hordes) and visit the #coding channel for communication
 
 Running for development, you'll need to run in simultaneously:
 ```
@@ -32,8 +32,8 @@ These components implement unique elements as well as basic components to genera
 
 |Component|State|Description
 |---|---|---|
-|Char Panel|Started|Stats and currently equipped items.|
-|Skill Panel|Started|List of known skills using icons, draggable into the Skill Bar.|
+|Char Panel|-|Stats and currently equipped items.|
+|Skill Panel|-|List of known skills using icons, draggable into the Skill Bar.|
 |PVP Panel|-|Shows players pvp progress / kills / fame last week, as well as arena rating and ranking.|
 |Inventory|-|All items owned by the player, current gold / elixir points, and a filter for items by name.|
 |Skill Bar|-|A list of draggable icons representing the current player skills. Can be vertical/horizontal and have inputs for row/col size.|
